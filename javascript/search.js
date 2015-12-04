@@ -40,14 +40,14 @@ function Search () { //pushes firebase img obj with any of the current tags into
 			var hasTags = {};
 			var currentTags  = [];
 			var allTags = [];
-			Object.keys(data[img]).forEach (function(key){
+			
 			 	//console.log(iO[key].tag, iO )
 			  // imgRef.child(""+iO.name).update({number:null})
-			  for ( var i = 1; i < tags.length; ++i ) {
+			for ( var i = 1; i < tags.length; ++i ) {
 			  	
-			 	if (iO[key].tag === tags[i]) {
+			 	if (typeof iO.tags[tags[i]] !== "undefined") {
 			 		
-			 		currentTags.push(iO[key].tag)
+			 		currentTags.push(tags[i])
 			 		//console.log(iO.name, test)
 			 		searchResults[iO.name] = {
 			 			file: iO.file,
@@ -55,10 +55,10 @@ function Search () { //pushes firebase img obj with any of the current tags into
 			 			number: currentTags.length 
 			 		}
 			 		//TEST>LENGTH= NUMBER
-			 		}//if
+			 	}//if
 
-			  }//for
-			});//obj.keysdata[img]
+			}//for
+			
 			if (typeof searchResults[iO.name] === "undefined") {
 				searchResults[iO.name] = {
 			 			file: iO.file,
