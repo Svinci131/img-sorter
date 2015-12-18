@@ -127,8 +127,10 @@ $( "#newGroup" ).click( function( event ) {
 		var tag = event.target.id.substring((event.target.id.indexOf('//') + 2), event.target.id.length)
 		var otags = newBatch[obj].objTags
 		var deleted = newBatch[obj].deleted
+		var added = newBatch[obj].added
 		deleted.push(tag)
 		otags.splice(otags.indexOf(tag))
+		added.splice(added.indexOf(tag))
 		var par = $(event.target).parent();
 		par.remove();
 	}
