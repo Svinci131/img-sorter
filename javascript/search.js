@@ -1,11 +1,22 @@
 var ref = new Firebase('https://blsimgsorter.firebaseio.com/'),
 	imgRef = ref.child('imgs');
 	tagsRef = ref.child('tags');
+var firstTags = null;
 var tags = [];
+var running = false; 
 var newBatch = {}
 var searchResults = {};
 //ref.child(""+key).remove()
 //SEARCH
+// imgRef.orderByValue().limitToFirst(5).on("value", function(snapshot) {
+// 	renderThumnail ($("#mostPopular"), snapshot.key(), snapshot.val().file, snapshot.val().number)
+// 	console.log(snapshot.key() + " has " + snapshot.val().number + " many tags");
+// });
+//on start put something somewhere
+//say do the function 
+//then clear 
+//then I can say if something isn't there 
+
 $(".tags").on ('click', '.tag', function() { //when a tag is clicked it runs search and renders the imgaes
 	if ($(this).hasClass( "button-primary" ) === true) {
 		$(this).removeClass('button-primary')
@@ -14,11 +25,25 @@ $(".tags").on ('click', '.tag', function() { //when a tag is clicked it runs sea
 	else {
 		$(this).addClass('clicked button-primary')
 	}
-	Search ()
+	// setTimeout(function () {
+	//search if last search is finished do search 
+	updateTags()
+	
+	if (running === false) {
+		console.log(tags)
+		firstTags = tags;
+		//console.log("first", f)
+		//console.log("before", tags)
+		Search ()
+		
+	}
+	
+
+	
+	
 });//tags.on
 
-
-function Search () { //pushes firebase img obj with any of the current tags into new obj (searchresults)
+function updateTags(){
 	$(".clicked").each (function(i) {
 		if (tags.length === 0) {
 			tags.push("x")
@@ -26,13 +51,24 @@ function Search () { //pushes firebase img obj with any of the current tags into
 		tags.push (this.id);
 		$(this).removeClass("clicked")
 	});
-
+	//console.log("css",tags)
 	$(".clicked_off").each (function(i) {
 		var index = tags.indexOf(this.id);
 		tags.splice(index, 1);
 		$(this).removeClass("clicked_off")
 	});
+}
+
+//its running this every time you click even if search isn't finished 
+//triggered when the data changes
+function Search () { //pushes firebase img obj with any of the current tags into new obj (searchresults)
 	// console.log(tags)
+	//if it's clicked stop it and run it again 
+	running = true;
+	($("#loading").css("visibility","visible"))
+	console.log(running)
+	prevTags = tags
+	//console.log("search", tags)
 	imgRef.on("value", function(snapshot) {
 	var data = snapshot.val();	
 		Object.keys(data).forEach (function(img){
@@ -41,18 +77,14 @@ function Search () { //pushes firebase img obj with any of the current tags into
 			var currentTags  = [];
 			var allTags = [];
 			
-			 	//console.log(iO[key].tag, iO )
-			  // imgRef.child(""+iO.name).update({number:null})
 			for ( var i = 1; i < tags.length; ++i ) {
-			  	
 			 	if (typeof iO.tags[tags[i]] !== "undefined") {
 			 		
 			 		currentTags.push(tags[i])
-			 		//console.log(iO.name, test)
 			 		searchResults[iO.name] = {
 			 			file: iO.file,
 			 			name: iO.name,
-			 			number: currentTags.length 
+			 			number: (currentTags.length-((currentTags.length)*2))
 			 		}
 			 		//TEST>LENGTH= NUMBER
 			 	}//if
@@ -72,37 +104,33 @@ function Search () { //pushes firebase img obj with any of the current tags into
 			
 			
 		});//obj,key img
+		$("#fileList").empty();
 
-	});//img.on
-	
-	$("#fileList").empty();
-	imgRef.orderByChild("number").startAt(1).on("child_added", function(snapshot) {
-  		
-	  	renderThumnail (snapshot.key(), snapshot.val().file, snapshot.val().number)
+	imgRef.orderByChild("number").endAt(-1).on("child_added", function(snapshot) {
+	  	renderThumnail ($("#fileList"), snapshot.key(), snapshot.val().file, snapshot.val().number)
 	  	console.log(snapshot.key() + " has " + snapshot.val().number + " many tags");
 	});
-	
-	//console.log(searchResults)
-	// if (newBatch[prop].deleted.length < 0) {
+	running = false;
+	($("#loading").css("visibility","hidden"))
+	console.log(running)
+	console.log("first", firstTags, "second", tags)
+	//if (firstTags === tags){
+		//function callback 
+	//}
+});//img.on
 
-	// }
 }
 
+//callback = search
 //on load tags
 tagsRef.orderByValue().on("value", function(snapshot) {//when a value changes  
     var data = snapshot.val();
     console.log(data)
 	Object.keys(data).forEach (function(key){
 	$(".tags").append("<button id="+key+" class='tag'>"+key+"</button>");	
-	// 	var existing = document.getElementById(data[key].tag, key)
-	// 		if (existing === null){
-	// 	 		
-	// 		}
-
 	});
 });
 
-function renderThumnail (name, src, num) {
-	$("#fileList").append("<div class='photo'><img src="+src+" class=thumbnail> <div class=thumbnail_label>"+name+"<span class='download glyphicon glyphicon-download-alt'></div></div> ")
-// <li>"+num+"</li>
+function renderThumnail (location, name, src, num) {
+	location.append("<div class='photo'><img src="+src+" class=thumbnail> <div class=thumbnail_label>"+name+"<span class='red'>"+num+"</span><span class='download glyphicon glyphicon-download-alt'></div></div>")
 }

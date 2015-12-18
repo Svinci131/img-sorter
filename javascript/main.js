@@ -6,10 +6,11 @@ var searchResults = {};
 var imgs = [];
 var newBatch = {}
 var currentTags = [];
-
+var individTags = [];
 /////////////////////
 
-////uploading code
+
+////save info to fire base 
 $("#save").on ("click",function() {
 		for (prop in newBatch) {
 			newBatch[prop].added.forEach (function (i){
@@ -25,16 +26,29 @@ $("#save").on ("click",function() {
 				
 			});
 		}
-})
+		currentTags.concat(individTags).forEach (function(tag){
+			tagsRef.on("value", function(snapshot) {//when a value changes  
+	 			var data=snapshot;
+	 			var obj = {};
+				obj[ tag ] = tag;
+		    		if (data[tag] === undefined) {
+		    			tagsRef.update(obj)
+		    			console.log(tag)
+		    		}
 
+			});
+		});
+});
+//exit
 $("#done").on ("click",function() {
 	if (confirm("Are you sure you're done?")) {	
 		window.location.replace("index.html");
 	}
 })
 
-///adding images and tags
+///adding images and name tag to firebase
 $('input').change(function() {    
+	console.log ($(this))
 	var fr = new FileReader;
 	    fr.onload = function(e) {
 			var img = new Image;
@@ -65,6 +79,7 @@ $('input').change(function() {
 	    
 });//input.change 
 
+//render on screen 
 function preview () {
   	$("#newGroup").empty()
 	  	for (prop in newBatch) {
@@ -104,7 +119,7 @@ function preview () {
 	}
 }	
 
-
+//delete tags from spefic images 
 $( "#newGroup" ).click( function( event ) {
 	var id = event.target.id
 	if (event.target.id.substr(id.length - 5) !== "input"){
@@ -117,50 +132,40 @@ $( "#newGroup" ).click( function( event ) {
 		var par = $(event.target).parent();
 		par.remove();
 	}
-
 });//str.slice(0, -1);
-		
-$( "#newGroup" ).on('keypress','.imgBox_input', function (e) {
-	   var parString = this.id.slice(0, -5);
-	   
+
+//delete group tags 
+$(".list-group").on ('click', '.list-group-item', function() {
+	currentTags.splice(currentTags.indexOf(this.id), 1)
+	$(this).remove();
+});
+//handles individual image tags 	
+$("#newGroup" ).on('keypress','.imgBox_input', function (e) {
+	   var parString = this.id.slice(0, -5);	   
 	   if (e.keyCode === 13) {
-	   		//console.log($(this).val())
+	   		var tag = ($(this).val()).toLowerCase();
+	   		tag = getName (tag)
+	   		console.log(tag)
+	   		individTags.push(tag)
 	   		newBatch[parString].added.push($(this).val())
 	   		preview();
 	   }
 }); 
 
-
+//handles group image tags 
 $('#tagInput').keypress(function (e) {
+   if (e.keyCode === 13) {
+       	var tag = $('#tagInput').val().toLowerCase();
+	  		tag = getName (tag)
 
-	   if (e.keyCode === 13) {
-	       	var tag = $('#tagInput').val().toLowerCase();
-		  		tag = getName (tag)
-
-		  	if (document.getElementById(tag) === null){
-				$("#groupTags").append ("<li class='list-group-item tag' id="+tag+"'>"+tag+"</li>")
-			}
-
-		tagsRef.on("value", function(snapshot) {//when a value changes  
-    		var data = snapshot.val();
-    		var obj = {};
-			obj[ tag ] = tag;
-			console.log(obj)
-    		if (data[tag] === undefined) {
-    			tagsRef.update(obj)
-    			console.log(tag)
-    		}
-
-		});
-		//ref.push({tag: tag})
-		currentTags.push (tag)
-		preview ()
-       	$('#test').val('');
-	 	}//keycode 13
-	});//keypress
-
-	
-/////////////UPLOADING NEW IMAGES 
+	  	if (document.getElementById(tag) === null){
+			$("#groupTags").append ("<li class='list-group-item tag' id="+tag+">"+tag+"<span class='glyphicon glyphicon-remove'></li>")
+		}
+	currentTags.push (tag)
+	preview ()
+   	$('#test').val('');
+ 	}//keycode 13
+});//keypress
 
 
 function getName (str) {
