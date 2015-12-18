@@ -19,6 +19,15 @@ header {
 	display: inline-block;
 }
 
+#loading {
+	visibility: hidden;
+	position: absolute;
+	top:200px;
+	left:400px; 
+	background-color: white;
+	padding:10px;
+	box-shadow: 0 0 5px rgba(0,0,0,.75);
+}
 .upload_header {
 	margin-bottom: 2%;
 	margin-top: 1%;
