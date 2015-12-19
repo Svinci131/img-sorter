@@ -17,42 +17,59 @@
 </head>
 
 <body>
-	
+	<div class="howTo" id="search_modal">
+		<div class="howTo first modal">
+			<p>Hello, Welcome to the BLS marketing image data base. 
+
+			Let's start our tutorial, by searching by tag!</p>
+
+			<button>Next</button>
+		</div>
+		<div class="howTo second modal_child">
+			<p>I'm let's say I'm looking for some pictures of our dean Nick Allard with students and professors 
+
+			I'll click words like Nick or Nick Allard, Students, and Professors</p>
+			<button>Next</button>
+		</div>
+		<div class="howTo third modal_child"><!-- onload -->
+			<p>Now, the database is now searches for all images that have those tags,
+			and will show you them down here. 
+
+			Please be patient, it may take a minute to load. </p>
+			<button>Next</button>
+		</div>
+		<div class="howTo fourth modal_child"><!-- onload -->
+			<p>Take a look at an image you like and press the down load icon and it'll show up on your browser or in a new window you can easily save from. 
+
+			Now, Let's add some new photos you how to add images to the data base </p>
+			<button>Next</button>
+		</div>
+	</div>
+
 	<header>
 			<ul class="nav inline_block">
 				<li role="presentation" class="nav__item nav_logo"><a href="#"><img src="imgs/BLS_logo_primary_red.png"  width="80%" height="auto"></a></li>
 				<li role="separator" class="divider"></li>
-	  			<li role="presentation" class="nav__item"><a href="#">How to Use</a></li>
+	  			<li role="presentation" class="nav__item" id="demo"><a href="#">How to Use</a></li>
 	  			<li role="presentation" class="nav__item"><a href="createalbum.html">Upload</a></li>
-	  		<!-- 	<li role="presentation" class="nav__item"><a href="#">Login</a></li> -->
-			</ul> 
+	  		</ul> 
 	</header><!-- header -->
 	<div class="container-fluid">
 		<div id="loading">
-			<!-- <div class="loader">Loading...</div> -->
 			<div class="spinner-loader">Loading…</div>
-<!-- 			<span> Please, wait..</span> -->
 		</div>
-	<!-- 	<button id="add"><a href="createalbum.html">Add More Images</a></button> -->
-
-
-			<div class="row">
-				<div class="tags">
-				</div>
+		<div class="row">
+			<div class="tags">
 			</div>
-
-
+		</div>
 		<div class="thumbnails" id="fileList">
-			
 		</div><!--thumbnails-->
-<!-- 		<div class="thumbnails" id="mostPopular">
-		<h5>Most Popular</h5>
-		</div><!--thumbnails--> 
  	</div><!--container-->
 
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
 <script src='javascript/search.js'></script>
 <script src='javascript/download.js'></script>
+<script src='javascript/howToUse.js'></script>
 <!-- <script src='javascript/loading.js'></script> -->
 <!-- <script src='javascript/main.js'></script> -->
 

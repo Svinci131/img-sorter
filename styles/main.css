@@ -19,6 +19,25 @@ header {
 	display: inline-block;
 }
 
+#search_modal {
+	background-color: gray;
+	position: absolute;
+	top:150px;
+	left:200px; 
+	padding:10px;
+	width:300px;
+}
+
+.modal_child {
+	border:1px solid black;
+	background-color: white;
+	margin: 2%;
+	padding:10px;
+}
+
+.modal_child button {
+	margin-left: 48%;
+}
 #loading {
 	visibility: hidden;
 	position: absolute;
