@@ -7,6 +7,7 @@ var imgs = [];
 var newBatch = {}
 var currentTags = [];
 var individTags = [];
+var groupDeleted = [];
 /////////////////////
 
 
@@ -16,13 +17,26 @@ $("#save").on ("click",function() {
 			newBatch[prop].added.forEach (function (i){
 				newBatch[prop].objTags.push (i)
 			});
+
 			newBatch[prop].objTags.forEach (function (i){
-				var obj = {};
-				obj[ i ] = i;
-				console.log(obj)
-				if (i !== newBatch[prop].name) {
-					imgRef.child(""+prop).child("tags").update(obj)
+				// console.log("tag", i,  "deleted", groupDeleted.indexOf(i))
+				if (groupDeleted.indexOf(i) < 0) {
+					//console.log(i)
+					var item = newBatch[prop].objTags
+					console.log(item)
+
+					//item.splice(item.indexOf(i),1)
+					//newBatch[prop].objTags.splice(i)
+					var obj = {};
+					obj[ i ] = i;
+					//console.log(obj)
+					if (i !== newBatch[prop].name) {
+						imgRef.child(""+prop).child("tags").update(obj)
+					}
 				}
+				
+					
+				
 				
 			});
 		}
@@ -48,7 +62,7 @@ $("#done").on ("click",function() {
 
 ///adding images and name tag to firebase
 $('input').change(function() {    
-	console.log ($(this))
+	//console.log ($(this))
 	var fr = new FileReader;
 	    fr.onload = function(e) {
 			var img = new Image;
@@ -73,7 +87,7 @@ $('input').change(function() {
 			}//onload
 
 	    img.src = fr.result;
-	    console.log (newBatch)
+	    //console.log (newBatch)
 		};//fr.onload
 		fr.readAsDataURL(this.files[0]);
 	    
@@ -87,21 +101,33 @@ function preview () {
 
 		//$("#newGroup").append('<div class="imgBox"><div class="col-md-3 newThumbnail" style="background-image: url('+newBatch[prop].file+')"><span class="imgText">'+prop+'</span></div><div class="col-md-9 newTags" id='+prop+'><div id='+prop+' class="groupTags"></div></div></div>');
 		$("#"+prop).each (function(){
+
 			newBatch[prop].gtags.forEach (function (i){
+
 				if (newBatch[prop].deleted.length > 0) {
 					newBatch[prop].deleted.forEach (function (j){	 
 						if(i !== j) {
-							console.log(prop, i,j)
+							//console.log(prop, i,j)
 							$("#"+prop).append ("<button type='button' class='btn btn-default tag'>"+i+"<span id ='"+prop+"//"+i+"'class='remove'>      x</span></button>")
 						}
 					});
 				}
 				else {
-					//console.log(newBatch[prop].objTags[newBatch[prop].objTags.indexOf(i)], prop)
-					if (typeof newBatch[prop].objTags[newBatch[prop].objTags.indexOf(i)] === "undefined"){
-						newBatch[prop].objTags.push (i)
+					//if it's not in object tags add it 
+					
+					var obj = newBatch[prop].objTags
+					var d = groupDeleted;
+					//if is in deleted 
+					//see if it's in obj tags 
+
+
+					
+					//console.log("HERE", groupDeleted, groupDeleted[groupDeleted.indexOf(i)], i)
+					if (typeof obj[obj.indexOf(i)] === "undefined"){
+						obj.push (i)
 					}
-					console.log("HERE", prop.name, newBatch[prop].objTags)
+					//show all object tags 
+					
 					$("#"+prop).append ("<button class='btn btn-default btn-xs tag'>"+i+"<span id ='"+prop+"//"+i+"'class='remove'>      x</span></button>")
 				}
 
@@ -109,7 +135,7 @@ function preview () {
 			})
 			
 			//
-			console.log(newBatch[prop].objTags)
+			//console.log(newBatch[prop].objTags)
 		
 		})
 		newBatch[prop].added.forEach (function (i){
@@ -139,6 +165,9 @@ $( "#newGroup" ).click( function( event ) {
 //delete group tags 
 $(".list-group").on ('click', '.list-group-item', function() {
 	currentTags.splice(currentTags.indexOf(this.id), 1)
+	//console.log(groupDeleted)
+	groupDeleted.push(this.id)
+
 	$(this).remove();
 });
 //handles individual image tags 	
@@ -147,14 +176,14 @@ $("#newGroup" ).on('keypress','.imgBox_input', function (e) {
 	   if (e.keyCode === 13) {
 	   		var tag = ($(this).val()).toLowerCase();
 	   		tag = getName (tag)
-	   		console.log(tag)
+	   		//console.log(tag)
 	   		individTags.push(tag)
 	   		newBatch[parString].added.push($(this).val())
 	   		preview();
 	   }
 }); 
 
-//handles group image tags 
+//adds group image tags 
 $('#tagInput').keypress(function (e) {
    if (e.keyCode === 13) {
        	var tag = $('#tagInput').val().toLowerCase();
@@ -165,7 +194,7 @@ $('#tagInput').keypress(function (e) {
 		}
 	currentTags.push (tag)
 	preview ()
-   	$('#test').val('');
+   	$('#tagInput').val('');
  	}//keycode 13
 });//keypress
 
