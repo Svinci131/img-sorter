@@ -8,50 +8,43 @@ var newBatch = {}
 var currentTags = [];
 var individTags = [];
 var groupDeleted = [];
-/////////////////////
-
+///////////////////// 
 
 ////save info to fire base 
 $("#save").on ("click",function() {
-		for (prop in newBatch) {
-			newBatch[prop].added.forEach (function (i){
-				newBatch[prop].objTags.push (i)
-			});
-
-			newBatch[prop].objTags.forEach (function (i){
-				// console.log("tag", i,  "deleted", groupDeleted.indexOf(i))
-				if (groupDeleted.indexOf(i) < 0) {
-					//console.log(i)
-					var item = newBatch[prop].objTags
-					console.log(item)
-
-					//item.splice(item.indexOf(i),1)
-					//newBatch[prop].objTags.splice(i)
-					var obj = {};
-					obj[ i ] = i;
-					//console.log(obj)
-					if (i !== newBatch[prop].name) {
-						imgRef.child(""+prop).child("tags").update(obj)
-					}
-				}
-				
-					
-				
-				
-			});
-		}
-		currentTags.concat(individTags).forEach (function(tag){
-			tagsRef.on("value", function(snapshot) {//when a value changes  
-	 			var data=snapshot;
-	 			var obj = {};
-				obj[ tag ] = tag;
-		    		if (data[tag] === undefined) {
-		    			tagsRef.update(obj)
-		    			console.log(tag)
-		    		}
-
-			});
+	//goes through each img obj in new batch 
+	for (prop in newBatch) {
+		//adds the added individ tags to the obj tags 
+		newBatch[prop].added.forEach (function (i){
+			newBatch[prop].objTags.push (i)
 		});
+
+		//adds the the obj tags to the firebase img object
+		//unless they are deleted group tags
+		newBatch[prop].objTags.forEach (function (i){
+			if (groupDeleted.indexOf(i) < 0) {
+				var item = newBatch[prop].objTags
+				var obj = {};
+				obj[ i ] = i;
+				if (i !== newBatch[prop].name) {
+					imgRef.child(""+prop).child("tags").update(obj)
+				}
+			}
+		});
+	}
+	//pushes the individual obj tags and current group tags to the firebase tags obj
+	currentTags.concat(individTags).forEach (function(tag){
+		tagsRef.on("value", function(snapshot) {//when a value changes  
+ 			var data=snapshot;
+ 			var obj = {};
+			obj[ tag ] = tag;
+	    		if (data[tag] === undefined) {
+	    			tagsRef.update(obj)
+	    			console.log(tag)
+	    		}
+
+		});
+	});
 });
 //exit
 $("#done").on ("click",function() {
@@ -60,9 +53,10 @@ $("#done").on ("click",function() {
 	}
 })
 
-///adding images and name tag to firebase
+//creates firebase image obj 
+//adds img obj to new batch object 
+//each img obj has a gtags key that is equal to current tags
 $('input').change(function() {    
-	//console.log ($(this))
 	var fr = new FileReader;
 	    fr.onload = function(e) {
 			var img = new Image;
@@ -85,63 +79,44 @@ $('input').change(function() {
 	 		  preview ()
 			 
 			}//onload
-
 	    img.src = fr.result;
-	    //console.log (newBatch)
 		};//fr.onload
 		fr.readAsDataURL(this.files[0]);
 	    
 });//input.change 
 
-//render on screen 
+//renders the image thumbnails
+//checks to see if grouptags are deleted and if not adds to Img.objtags 
+//renders objtags 
 function preview () {
   	$("#newGroup").empty()
 	  	for (prop in newBatch) {
-	  	$("#newGroup").append('<div class="imgBox"><div class="col-md-5 newThumbnail " style="background-image: url('+newBatch[prop].file+')"></div><div class="col-md-6"><div class="newImgName">'+prop+'</div><input type="text" id="'+prop+'input" placeholder="new tag" style="width: 100%; marin-top:12px" class="imgBox_input"><div class="newTags" id='+prop+'><div id='+prop+' class="groupTags"></div></div></div></div>')
-
-		//$("#newGroup").append('<div class="imgBox"><div class="col-md-3 newThumbnail" style="background-image: url('+newBatch[prop].file+')"><span class="imgText">'+prop+'</span></div><div class="col-md-9 newTags" id='+prop+'><div id='+prop+' class="groupTags"></div></div></div>');
+	  	$("#newGroup").append('<div class="imgBox"><div class="col-md-5 newThumbnail " style="background-image: url('+newBatch[prop].file+')"></div><div class="col-md-6"><div class="newImgName">'+prop+'</div><input type="text" id="'+prop+'input" placeholder="new tag" style="width: 100%; marin-top:12px" class="imgBox_input"><div class="newTags" id='+prop+'><div id='+prop+' class="groupTags"></div></div></div></div>');
 		$("#"+prop).each (function(){
-
 			newBatch[prop].gtags.forEach (function (i){
-
+			//goes through the gtags(current tags at time it was uploaded)
+			//if they haven't been deleted it adds the tags to the tags div 
 				if (newBatch[prop].deleted.length > 0) {
 					newBatch[prop].deleted.forEach (function (j){	 
 						if(i !== j) {
-							//console.log(prop, i,j)
-							$("#"+prop).append ("<button type='button' class='btn btn-default tag'>"+i+"<span id ='"+prop+"//"+i+"'class='remove'>      x</span></button>")
-						}
+							renderTag(prop, i)
+						};
 					});
 				}
+				//otherwise it adds the tag to that images object tags and renders all the objects tags
 				else {
-					//if it's not in object tags add it 
-					
 					var obj = newBatch[prop].objTags
-					var d = groupDeleted;
-					//if is in deleted 
-					//see if it's in obj tags 
-
-
-					
-					//console.log("HERE", groupDeleted, groupDeleted[groupDeleted.indexOf(i)], i)
 					if (typeof obj[obj.indexOf(i)] === "undefined"){
 						obj.push (i)
 					}
-					//show all object tags 
-					
-					$("#"+prop).append ("<button class='btn btn-default btn-xs tag'>"+i+"<span id ='"+prop+"//"+i+"'class='remove'>      x</span></button>")
-				}
-
-				
-			})
-			
-			//
-			//console.log(newBatch[prop].objTags)
-		
-		})
+					renderTag(prop, i)
+				};
+			});		
+		});
+		//renders the tags that were added to a specefic img 
 		newBatch[prop].added.forEach (function (i){
-				$("#"+prop).append ("<button class='btn btn-default btn-xs tag'>"+i+"<span id ='"+prop+"//"+i+"'class='remove'>      x</span></button>")
-		})
-
+			renderTag(prop, i)
+		});
 	}
 }	
 
@@ -151,6 +126,7 @@ $( "#newGroup" ).click( function( event ) {
 	if (event.target.id.substr(id.length - 5) !== "input"){
 		var obj = event.target.id.substring(0, event.target.id.indexOf('//'))
 		var tag = event.target.id.substring((event.target.id.indexOf('//') + 2), event.target.id.length)
+		
 		var otags = newBatch[obj].objTags
 		var deleted = newBatch[obj].deleted
 		var added = newBatch[obj].added
@@ -160,16 +136,16 @@ $( "#newGroup" ).click( function( event ) {
 		var par = $(event.target).parent();
 		par.remove();
 	}
-});//str.slice(0, -1);
+});
 
-//delete group tags 
+//delete tags from all images 
 $(".list-group").on ('click', '.list-group-item', function() {
 	currentTags.splice(currentTags.indexOf(this.id), 1)
-	//console.log(groupDeleted)
 	groupDeleted.push(this.id)
-
 	$(this).remove();
+	preview();
 });
+
 //handles individual image tags 	
 $("#newGroup" ).on('keypress','.imgBox_input', function (e) {
 	   var parString = this.id.slice(0, -5);	   
@@ -196,9 +172,9 @@ $('#tagInput').keypress(function (e) {
 	preview ()
    	$('#tagInput').val('');
  	}//keycode 13
-});//keypress
+});
 
-
+//strips out punctuation
 function getName (str) {
 	var start = str.lastIndexOf("\\")
 	var end = str.length
@@ -208,13 +184,11 @@ function getName (str) {
 	return title
 }
 
-function renderThumnail (name, src, num) {
-	$("#fileList").append("<div class='photo'><img src="+src+" class=thumbnail> <ul>"+name+"<li>"+num+"</li></li> ")
+
+function renderTag (parent, tag) {
+	$("#"+parent).append ("<button class='btn btn-default btn-xs tag'>"+tag+"<span id ='"+parent+"//"+tag+"'class='remove'>      x</span></button>")	
+	// $("#fileList").append("<div class='photo'><img src="+src+" class=thumbnail> <ul>"+name+"<li>"+num+"</li></li> ")
 }
 
-//modal stuff
-// $("#new").on ("click", function(){
-// 	$("#addImg").removeClass ("invisible")
-// })
-// // $("upload")
+
 
