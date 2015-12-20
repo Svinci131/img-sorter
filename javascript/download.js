@@ -1,6 +1,7 @@
-$(".thumbnails").on ('click', 'img', function() {
-	console.log(this.src)
-	var url = this.src.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+$(".thumbnails").on ('click', '.download', function() {
+	console.log( $( this ).parents('.photo').find('img').attr("src"));
+	var link = $( this ).parents('.photo').find('img').attr("src")
+	var url = link.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
 	window.open(url);
 });
 

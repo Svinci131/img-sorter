@@ -112,6 +112,11 @@ function Search () { //pushes firebase img obj with any of the current tags into
 	});
 	running = false;
 	($("#loading").css("visibility","hidden"))
+
+	if ($("#third").hasClass ("invisible") === false) {
+		($("#third").addClass("invisible"))
+		($("#fourth").removeClass("invisible"))
+	}
 	console.log(running)
 	console.log("first", firstTags, "second", tags)
 	//if (firstTags === tags){

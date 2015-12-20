@@ -2,7 +2,40 @@
 var ref = new Firebase('https://blsimgsorter.firebaseio.com/')
 $("#demo").click (function (){
 	ref.update ({demo: true});
+	$("#search_modal").removeClass("invisible")
+	$("#first").removeClass("invisible")
 });
+
+var holder = null;
+$(".next").click (function (){
+	var prev = $(this).parent().attr("id")
+	var next = ($(this).parent().next().attr("id"))
+	// alert($(this).parent().next().attr("id"))
+	$("#"+prev).addClass("invisible")
+	$("#"+next).removeClass("invisible")
+
+	if (next === "third"){
+		second ();
+	}
+});
+
+
+
+function second () {//none 
+	//click the tags 
+	$('#nick').click(); 
+	$('#students').click(); 
+	$('#professors').click(); 
+
+}
+function third () {//none 
+	//when They load do fourth
+	//if img div is empty hide node 
+}
+function fourth () {//none 
+	//go to next page 
+}
+
 
 //show and hide a bunch of modals on next click 
 //force state clicked 
