@@ -1,7 +1,7 @@
 //put in something that says whether you've saved 
-//write a how to use 
+//style everything 
+//google apis
+//look into multiple image uploading 
 
-//write how to use 
 
-//fix downloading 
 

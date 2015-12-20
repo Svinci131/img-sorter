@@ -45,25 +45,23 @@ $(".next").click (function (){
 	if (prev === "ninth") {
 		($(".list-group-item").eq(0)).removeClass("shadow")
 		highlight($("#save").eq(0))
+		ref.update ({demo: false});
 		window.location.replace("index.html");
 	}
 });
 
 
-//second happens automatically after load
-
-//moves you to the upload page
-function fourth () {
-
+function third () {//click the tags 
+	$('#nick').click(); 
+	$('#students').click(); 
+	$('#professors').click(); 
 }
 
-
-//second half 
-var truthValue = null;
 ref.on("value", function(snapshot) {
-	console.log(snapshot.val().demo);
-	start("fifth")
-	highlight ($("#upload"))
+	if(snapshot.val().demo !== false){
+		start("fifth")
+		highlight ($("#upload"))
+	};
 });
 
 
@@ -71,7 +69,8 @@ function callFunction (place, el, fun) {
 	if (place === el){
 		fun
 	}
-}
+};
+
 function highlight (el) {
 	el.eq(0).addClass("shadow")
 }
