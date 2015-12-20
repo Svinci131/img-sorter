@@ -1,45 +1,79 @@
 //force a firebase state of demo to equal true//
 var ref = new Firebase('https://blsimgsorter.firebaseio.com/')
+
+function start (first) {
+	$(".howTo").removeClass("invisible")
+	$("#"+first).removeClass("invisible")
+}
 $("#demo").click (function (){
 	ref.update ({demo: true});
-	$("#search_modal").removeClass("invisible")
-	$("#first").removeClass("invisible")
+	start("first")
 });
 
 var holder = null;
 $(".next").click (function (){
+
 	var prev = $(this).parent().attr("id")
 	var next = ($(this).parent().next().attr("id"))
-	// alert($(this).parent().next().attr("id"))
+	//alert(prev)
+
 	$("#"+prev).addClass("invisible")
 	$("#"+next).removeClass("invisible")
 
 	if (next === "third"){
 		third ();
 	}
-	if (next === "fourth"){
-
-		fourth ();
-
+	if (prev === "fourth"){
+		window.location.replace("createalbum.html");
+	}
+	if (prev === "fifth") {
+		$("#upload").removeClass("shadow")
+		highlight ($("#tagInput"))
+	}
+	if (prev === "sixth") {
+		$("#tagInput").removeClass("shadow")
+		highlight ($(".imgBox_input"))
+	}
+	if (prev === "seventh") {
+		$(".imgBox_input").removeClass("shadow")
+		highlight($(".btn-xs").eq(0))
+	}
+	if (prev === "eighth") {
+		$(".btn-xs").eq(0).removeClass("shadow")
+		highlight($(".list-group-item").eq(0))
+	}
+	if (prev === "ninth") {
+		($(".list-group-item").eq(0)).removeClass("shadow")
+		highlight($("#save").eq(0))
+		window.location.replace("index.html");
 	}
 });
 
 
+//second happens automatically after load
 
-function third () {//none 
-	//click the tags 
-	$('#nick').click(); 
-	$('#students').click(); 
-	$('#professors').click(); 
+//moves you to the upload page
+function fourth () {
 
 }
-// function third () {//none 
-// 	//when They load do fourth
-// 	//if img div is empty hide node 
-// }
-function fourth () {//none 
-	// $(".photo .download").eq(0)
-	alert("test")
+
+
+//second half 
+var truthValue = null;
+ref.on("value", function(snapshot) {
+	console.log(snapshot.val().demo);
+	start("fifth")
+	highlight ($("#upload"))
+});
+
+
+function callFunction (place, el, fun) {
+	if (place === el){
+		fun
+	}
+}
+function highlight (el) {
+	el.eq(0).addClass("shadow")
 }
 
 

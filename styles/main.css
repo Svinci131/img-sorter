@@ -19,7 +19,21 @@ header {
 	display: inline-block;
 }
 
-#search_modal {
+.shadow {
+	-webkit-box-shadow: 10px 10px 129px 32px rgba(19,135,237,1);
+	-moz-box-shadow: 10px 10px 129px 32px rgba(19,135,237,1);
+	box-shadow: 10px 10px 129px 32px rgba(19,135,237,1);
+}
+
+.right {
+	position: relative;
+	right:400px;
+}
+.mleft {
+	position: relative;
+	left:300px;
+}
+.howTo {
 	background-color: gray;
 	position: absolute;
 	top:150px;

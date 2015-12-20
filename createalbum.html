@@ -13,7 +13,44 @@
 
 
 <body>
+	<div class="howTo invisible" id="upload_modal">
+		<div id="fifth"class="modal_child invisible">
+			<p>Aright Let's make our first album
+			   Let's start by clicking the upload button and selecting an image or two. 
 
+			   You'll see the images appear on your left. 
+			</p>
+			<button class="next">Next</button>
+		</div>
+		<div id="sixth"class="modal_child invisible right">
+			<p>To create group tags, type your tag name here, 
+			these tags will be added to every image in this album, including ones you add later. 
+			You can upload and tag images in whatever order you feel like. 
+			</p>
+			<button class="next">Next</button>
+		</div>
+		<div id="seventh"class="modal_child invisible mleft">
+			<p>To add a tag to one particular image only add it in here 
+			</p>
+			<button class="next">Next</button>
+		</div>
+		<div id="eighth"class="modal_child invisible mleft">
+			<p>If we want to remove a tag from one particular image click the "x" over here 
+			</p>
+			<button class="next">Next</button>
+		</div>
+		<div id="ninth" class="modal_child invisible right">
+			<p>If we want to delete a tag from all the groups click the "x" over here 
+			</p>
+			<button class="next">Next</button>
+		</div>
+		<div id="tenth"class="modal_child invisible">
+			<p>When You're done, Hit save and then done 
+			or just click done, to exit with out saving. 
+			</p>
+			<button class="next">Next</button>
+		</div>
+	</div>
 	<div class="container-fluid">
 		<div class="upload_header">
 			<img src="imgs/BLS_logo_primary_red.png" width="20%" height="auto">
@@ -22,7 +59,7 @@
 		<div class="addImg">			
 			<div class="col-md-3">
 				<a href="#" onclick="document.getElementById('fileID').click(); return false;"/>
-					<button  class="btn btn-default btn-file">upload
+					<button  id="upload" class="btn btn-default btn-file">upload
 					</button>
 				</a>
 				<button id="save" class="btn btn-default">save
