@@ -114,8 +114,12 @@ function Search () { //pushes firebase img obj with any of the current tags into
 	($("#loading").css("visibility","hidden"))
 
 	if ($("#third").hasClass ("invisible") === false) {
-		($("#third").addClass("invisible"))
-		($("#fourth").removeClass("invisible"))
+		$("#third").addClass("invisible");
+		$("#fourth").removeClass("invisible");
+		$(".photo .download").eq(0).css ({
+			"-webkit-box-shadow": "10px 10px 129px 32px rgba(19,135,237,1)",
+			"-moz-box-shadow": "10px 10px 129px 32px rgba(19,135,237,1)",
+			"box-shadow": "10px 10px 129px 32px rgba(19,135,237,1)"})
 	}
 	console.log(running)
 	console.log("first", firstTags, "second", tags)

@@ -15,25 +15,31 @@ $(".next").click (function (){
 	$("#"+next).removeClass("invisible")
 
 	if (next === "third"){
-		second ();
+		third ();
+	}
+	if (next === "fourth"){
+
+		fourth ();
+
 	}
 });
 
 
 
-function second () {//none 
+function third () {//none 
 	//click the tags 
 	$('#nick').click(); 
 	$('#students').click(); 
 	$('#professors').click(); 
 
 }
-function third () {//none 
-	//when They load do fourth
-	//if img div is empty hide node 
-}
+// function third () {//none 
+// 	//when They load do fourth
+// 	//if img div is empty hide node 
+// }
 function fourth () {//none 
-	//go to next page 
+	// $(".photo .download").eq(0)
+	alert("test")
 }
 
 
