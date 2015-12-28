@@ -57,33 +57,51 @@ $("#done").on ("click",function() {
 //creates firebase image obj and google drive url 
 //adds img obj to new batch object 
 //each img obj has a gtags key that is equal to current tags
+var isDuplicate = false;
 $('input').change(function() {    
+	var self = this;
 	var fr = new FileReader;
 	    fr.onload = function(e) {
 			var img = new Image;
 			var link = ($('input[type=file]').val())
 			var name = getName(link)
-			window.open('https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/IMG0105JPG','_blank');
 			img.onload = function() {
-			  var imgObj = imgRef.child(""+name)	
-			  //
-			  newBatch[name] = {
-			  	file: fr.result,
-			  	name:name,
-			  	gtags: currentTags,
-			  	objTags:[],
-			  	deleted:[],
-			  	added:[name]//https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/
-				};
+				var imgObj = imgRef.child(""+name);
+			  	  isDuplicate = false;
+			  	   newBatch[name] = {
+				  	file: fr.result,
+				  	name:name,
+				  	gtags: currentTags,
+				  	objTags:[],
+				  	deleted:[],
+				  	added:[name]//https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/
+					};
 
-			  imgObj.set ({file: fr.result, name:name, tags:{name:name}});
-	 		  preview ()
-			 
+				  imgRef.once("value", function(snapshot) {
+					var data = snapshot.val();	
+					if (typeof data[name] === "undefined") {
+						console.log(data[name])
+						insertFile(self);
+				 		imgObj.set ({name:name, tags:{name:name}});
+		 		  		preview ()
+					}
+					else {
+						console.log("here", data[name])
+						alert("An Image with this name already exists")
+						//alert(data[name].name)
+					}
+					
+				  });
+				 			 
 			}//onload
 	    img.src = fr.result;
 		};//fr.onload
+
 		fr.readAsDataURL(this.files[0]);
-	    insertFile(this);
+		// console.log('https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/IMG0105JPG')
+		// console.log('https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/test')
+		console.log(isDuplicate)
+
 });//input.change 
 
 //renders the image thumbnails
