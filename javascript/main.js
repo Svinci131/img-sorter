@@ -57,7 +57,6 @@ $("#done").on ("click",function() {
 //creates firebase image obj and google drive url 
 //adds img obj to new batch object 
 //each img obj has a gtags key that is equal to current tags
-var isDuplicate = false;
 $('input').change(function() {    
 	var self = this;
 	var fr = new FileReader;
@@ -86,9 +85,7 @@ $('input').change(function() {
 		 		  		preview ()
 					}
 					else {
-						console.log("here", data[name])
 						alert("An Image with this name already exists")
-						//alert(data[name].name)
 					}
 					
 				  });
@@ -96,12 +93,7 @@ $('input').change(function() {
 			}//onload
 	    img.src = fr.result;
 		};//fr.onload
-
 		fr.readAsDataURL(this.files[0]);
-		// console.log('https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/IMG0105JPG')
-		// console.log('https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/test')
-		console.log(isDuplicate)
-
 });//input.change 
 
 //renders the image thumbnails

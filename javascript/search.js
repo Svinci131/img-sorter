@@ -142,5 +142,5 @@ tagsRef.orderByValue().on("value", function(snapshot) {//when a value changes
 
 function renderThumnail (location, name, num) {
 	console.log(name)
-	location.append("<div class='photo'><img src='https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/"+name+"' class=thumbnail> <div class=thumbnail_label>"+name+"<span class='red'>"+num+"</span><span class='download glyphicon glyphicon-download-alt'></div></div>")
+	location.append("<div class='photo'><img src='https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/"+name+"' class=thumbnail id="+name+"> <div class=thumbnail_label>"+name+"<span class='red'>"+num+"</span><span class='download glyphicon glyphicon-download-alt'></div></div>")
 }
