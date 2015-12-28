@@ -8,11 +8,25 @@
 <link rel='stylesheet' href='styles/normalize.css'>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"> 
 <link rel='stylesheet' href='styles/main.css'>
+<script src='javascript/googleapi.js'></script>
 <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 </head>
 
 
 <body>
+	 <!--authorization -->
+	   <input type='file' id="imgInp" />
+      <img id="blah" src="#" alt="your image" />
+
+    <div id="authorize-div" style="display: none">
+      <span>Authorize access to Drive API</span>
+      <!--Button for the user to click to initiate auth sequence -->
+      <button id="authorize-button" onclick="handleAuthClick(event)">
+        Authorize
+      </button>
+    </div>
+    <pre id="output"></pre> 
+
 	<div class="howTo invisible" id="upload_modal">
 		<div id="fifth"class="modal_child invisible">
 			<p>Aright Let's make our first album
@@ -96,8 +110,10 @@
  	</div><!--container-->
 
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
-<script src='javascript/main.js'></script>
+<script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
+<script src='javascript/backup.js'></script>
 <script src='javascript/howToUse.js'></script>
+
 
 
 

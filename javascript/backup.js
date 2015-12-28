@@ -15,20 +15,23 @@
         const close_delim = "\r\n--" + boundary + "--";
 
         var reader = new FileReader();
-        console.log(fileData)
+       
         reader.readAsBinaryString(fileData.files[0]);
+        var link = ($('input[type=file]').val())
+		var name = getName(link)
+		 console.log(link, name)
         // .readAsDataURL(input.files[0])
         //console.log(fileData)
         reader.onload = function(e) {
           var contentType = 'application/octet-stream';
           var metadata = {
-            'title': "dog.jpg",
+            'title': name,
             'mimeType': contentType,
 			  "parents": [{
 			    "kind": "drive#fileLink",
 			    "id": "0B58gM6k8rHBoZE5EY044TkJ1Ulk"
 			  }],
-			  "webViewLink": "https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/dog.jpg"
+			  "webViewLink": "https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/"+name
           };
 
           var base64Data = btoa(reader.result);
@@ -62,27 +65,32 @@
 	//var currentObj= {}
 
 	 function readURL(input) {
+        var reader = new FileReader();
+        var link = ($('input[type=file]').val())
+        console.log(link)
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+            //currentObj[link]=e.target.result
+            insertFile(e.target.result) 
+        }
 
-	    // if (input.files && input.files[0]) {
-	    	// console.log(input)
-	        var reader = new FileReader();
-	        var link = ($('input[type=file]').val())
-	        console.log(link)
-	        reader.onload = function (e) {
-	            $('#blah').attr('src', e.target.result);
-	            //currentObj[link]=e.target.result
-	            insertFile(e.target.result) 
-	        }
-
-	        reader.readAsDataURL(input.files[0]);
-	    //}
+        reader.readAsDataURL(input.files[0]);
 	}
 
 	$('input').change(function(){
 	  console.log("foo")
 	     insertFile(this);
-
 	});
+
+	function getName (str) {
+	var start = str.lastIndexOf("\\")
+	var end = str.length
+	var title = str.slice(start+=1).replace(/[.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"")
+		title=title.replace(/ /g,"_")
+
+	return title
+}
+
 
 
 
