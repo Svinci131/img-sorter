@@ -22,8 +22,12 @@
         reader.onload = function(e) {
           var contentType = 'application/octet-stream';
           var metadata = {
-            'title': fileData.fileName,
-            'mimeType': contentType
+            'title': "cat.jpg",
+            'mimeType': contentType,
+			  "parents": [{
+			    "kind": "drive#fileLink",
+			    "id": "0B58gM6k8rHBoZE5EY044TkJ1Ulk"
+			  }]
           };
 
           var base64Data = btoa(reader.result);
