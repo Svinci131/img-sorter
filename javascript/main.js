@@ -53,7 +53,8 @@ $("#done").on ("click",function() {
 	}
 })
 
-//creates firebase image obj 
+//uploads imgae 
+//creates firebase image obj and google drive url 
 //adds img obj to new batch object 
 //each img obj has a gtags key that is equal to current tags
 $('input').change(function() {    
@@ -62,17 +63,17 @@ $('input').change(function() {
 			var img = new Image;
 			var link = ($('input[type=file]').val())
 			var name = getName(link)
-
+			window.open('https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/IMG0105JPG','_blank');
 			img.onload = function() {
 			  var imgObj = imgRef.child(""+name)	
-
+			  //
 			  newBatch[name] = {
 			  	file: fr.result,
 			  	name:name,
 			  	gtags: currentTags,
 			  	objTags:[],
 			  	deleted:[],
-			  	added:[name]
+			  	added:[name]//https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/
 				};
 
 			  imgObj.set ({file: fr.result, name:name, tags:{name:name}});
@@ -82,7 +83,7 @@ $('input').change(function() {
 	    img.src = fr.result;
 		};//fr.onload
 		fr.readAsDataURL(this.files[0]);
-	    
+	    insertFile(this);
 });//input.change 
 
 //renders the image thumbnails
@@ -191,4 +192,57 @@ function renderTag (parent, tag) {
 }
 
 
+///create url- insert with google api
+function insertFile(fileData, callback) {
+	const boundary = '-------314159265358979323846';
+	const delimiter = "\r\n--" + boundary + "\r\n";
+	const close_delim = "\r\n--" + boundary + "--";
 
+	var reader = new FileReader();
+
+	reader.readAsBinaryString(fileData.files[0]);
+	var link = ($('input[type=file]').val())
+	var name = getName(link)
+	 console.log(link, name)
+	// .readAsDataURL(input.files[0])
+	//console.log(fileData)
+	reader.onload = function(e) {
+	  var contentType = 'application/octet-stream';
+	  var metadata = {
+	    'title': name,
+	    'mimeType': contentType,
+		  "parents": [{
+		    "kind": "drive#fileLink",
+		    "id": "0B58gM6k8rHBoZE5EY044TkJ1Ulk"
+		  }],
+		  "webViewLink": "https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/"+name
+	  };
+
+	  var base64Data = btoa(reader.result);
+	  var multipartRequestBody =
+	      delimiter +
+	      'Content-Type: application/json\r\n\r\n' +
+	      JSON.stringify(metadata) +
+	      delimiter +
+	      'Content-Type: ' + contentType + '\r\n' +
+	      'Content-Transfer-Encoding: base64\r\n' +
+	      '\r\n' +
+	      base64Data +
+	      close_delim;
+
+	  var request = gapi.client.request({
+	      'path': '/upload/drive/v2/files',
+	      'method': 'POST',
+	      'params': {'uploadType': 'multipart'},
+	      'headers': {
+	        'Content-Type': 'multipart/mixed; boundary="' + boundary + '"'
+	      },
+	      'body': multipartRequestBody});
+	  if (!callback) {
+	    callback = function(file) {
+	      console.log(file)
+	    };
+	  }
+	  request.execute(callback);
+	}
+}

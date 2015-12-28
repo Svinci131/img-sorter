@@ -24,7 +24,7 @@
         if (authResult && !authResult.error) {
           // Hide auth UI, then load client library.
           authorizeDiv.style.display = 'none';
-          loadDriveApi();
+          //loadDriveApi();
         } else {
           // Show auth UI, allowing the user to initiate authorization by
           // clicking authorize button.
@@ -47,40 +47,40 @@
       /**
        * Load Drive API client library.
        */
-      function loadDriveApi() {
-        gapi.client.load('drive', 'v2', listFiles);
-      }
+      // function loadDriveApi() {
+      //   gapi.client.load('drive', 'v2', listFiles);
+      // }
 
       /**
        * Print files.
        */
-      function listFiles() {
-        var request = gapi.client.drive.files.list({
-            'maxResults': 10
-          });
+      // function listFiles() {
+      //   var request = gapi.client.drive.files.list({
+      //       'maxResults': 10
+      //     });
 
-          request.execute(function(resp) {
-            appendPre('Files:');
-            var files = resp.items;
-            if (files && files.length > 0) {
-              for (var i = 0; i < files.length; i++) {
-                var file = files[i];
-                appendPre(file.title + ' (' + file.id + ')');
-              }
-            } else {
-              appendPre('No files found.');
-            }
-          });
-      }
+      //     request.execute(function(resp) {
+      //       appendPre('Files:');
+      //       var files = resp.items;
+      //       if (files && files.length > 0) {
+      //         for (var i = 0; i < files.length; i++) {
+      //           var file = files[i];
+      //           appendPre(file.title + ' (' + file.id + ')');
+      //         }
+      //       } else {
+      //         appendPre('No files found.');
+      //       }
+      //     });
+      // }
 
-      /**
-       * Append a pre element to the body containing the given message
-       * as its text node.
-       *
-       * @param {string} message Text to be placed in pre element.
-       */
-      function appendPre(message) {
-        var pre = document.getElementById('output');
-        var textContent = document.createTextNode(message + '\n');
-        pre.appendChild(textContent);
-      }
+      // /**
+      //  * Append a pre element to the body containing the given message
+      //  * as its text node.
+      //  *
+      //  * @param {string} message Text to be placed in pre element.
+      //  */
+      // function appendPre(message) {
+      //   var pre = document.getElementById('output');
+      //   var textContent = document.createTextNode(message + '\n');
+      //   pre.appendChild(textContent);
+      // }
