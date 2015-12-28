@@ -82,7 +82,6 @@ function Search () { //pushes firebase img obj with any of the current tags into
 			 		
 			 		currentTags.push(tags[i])
 			 		searchResults[iO.name] = {
-			 			file: iO.file,
 			 			name: iO.name,
 			 			number: (currentTags.length-((currentTags.length)*2))
 			 		}
@@ -93,7 +92,6 @@ function Search () { //pushes firebase img obj with any of the current tags into
 			
 			if (typeof searchResults[iO.name] === "undefined") {
 				searchResults[iO.name] = {
-			 			file: iO.file,
 			 			name: iO.name,
 			 			number: 0 
 			 		}
@@ -141,6 +139,5 @@ tagsRef.orderByValue().on("value", function(snapshot) {//when a value changes
 });
 
 function renderThumnail (location, name, num) {
-	console.log(name)
-	location.append("<div class='photo'><img src='https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/"+name+"' class=thumbnail id="+name+"> <div class=thumbnail_label>"+name+"<span class='red'>"+num+"</span><span class='download glyphicon glyphicon-download-alt'></div></div>")
+	location.append("<div class='photo'><div class=thumbnail_label><span class='download glyphicon glyphicon-download-alt'></div><img src='https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/"+name+"' class=thumbnail id="+name+"></div>")
 }

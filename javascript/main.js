@@ -10,7 +10,7 @@ var individTags = [];
 var groupDeleted = [];
 ///////////////////// 
 
-////save info to fire base 
+////save tags to fire base 
 $("#save").on ("click",function() {
 	//goes through each img obj in new batch 
 	for (prop in newBatch) {
@@ -63,7 +63,10 @@ $('input').change(function() {
 	    fr.onload = function(e) {
 			var img = new Image;
 			var link = ($('input[type=file]').val())
+			//var ext = link.slice(link.lastIndexOf("."), link.length)
+			//var name = link.slice(0, link.lastIndexOf(ext))
 			var name = getName(link)
+			// console.log(name, ext)
 			img.onload = function() {
 				var imgObj = imgRef.child(""+name);
 			  	  isDuplicate = false;
