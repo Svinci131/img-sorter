@@ -107,7 +107,7 @@ function Search () { //pushes firebase img obj with any of the current tags into
 		$("#fileList").empty();
 
 	imgRef.orderByChild("number").endAt(-1).on("child_added", function(snapshot) {
-	  	renderThumnail ($("#fileList"), snapshot.key(), snapshot.val().file, snapshot.val().number)
+	  	renderThumnail ($("#fileList"), snapshot.key(), snapshot.val().number)
 	  	console.log(snapshot.key() + " has " + snapshot.val().number + " many tags");
 	});
 	running = false;
@@ -140,6 +140,7 @@ tagsRef.orderByValue().on("value", function(snapshot) {//when a value changes
 	});
 });
 
-function renderThumnail (location, name, src, num) {
-	location.append("<div class='photo'><img src="+src+" class=thumbnail> <div class=thumbnail_label>"+name+"<span class='red'>"+num+"</span><span class='download glyphicon glyphicon-download-alt'></div></div>")
+function renderThumnail (location, name, num) {
+	console.log(name)
+	location.append("<div class='photo'><img src='https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/"+name+"' class=thumbnail> <div class=thumbnail_label>"+name+"<span class='red'>"+num+"</span><span class='download glyphicon glyphicon-download-alt'></div></div>")
 }

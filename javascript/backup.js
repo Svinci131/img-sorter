@@ -1,10 +1,12 @@
+var ref = new Firebase('https://blsimgsorter.firebaseio.com/'),
+	imgRef = ref.child('imgs');
 
-
-     // * Insert new file.
-     // *
-     // * @param {File} fileData File object to read data from.
-     // * @param {Function} callback Function to call when the request is complete.
-     // */
+// * Insert new file.
+// *
+// * @param {File} fileData File object to read data from.
+// * @param {Function} callback Function to call when the request is complete.
+// */
+var test = {}
 
 function insertFile(fileData, callback) {
 	const boundary = '-------314159265358979323846';
@@ -16,7 +18,8 @@ function insertFile(fileData, callback) {
 	reader.readAsBinaryString(fileData.files[0]);
 	var link = ($('input[type=file]').val())
 	var name = getName(link)
-	 console.log(link, name)
+	test[name]= name;
+	console.log(link, name)
 	// .readAsDataURL(input.files[0])
 	//console.log(fileData)
 	reader.onload = function(e) {
@@ -82,8 +85,9 @@ $('input').change(function(){
 			var name = getName(link)
 
 			img.onload = function() {
+				//console.log(this)
 			 // var imgObj = imgRef.child(""+name)	
-
+			 //imgObj.set ({file: fr.result, name:name, tags:{name:name}});
 			 //  newBatch[name] = {
 			 //  	file: fr.result,
 			 //  	name:name,
@@ -95,13 +99,19 @@ $('input').change(function(){
 
 			 //  imgObj.set ({file: fr.result, name:name, tags:{name:name}});
 	 		//   preview ()
-			 
+			 //console.log(this)
 			}//onload
+			//console.log(this)
 	    img.src = fr.result;
 		};//fr.onload
+		
 		fr.readAsDataURL(this.files[0]);
 	    
      insertFile(this);
+     console.log(test[0])
+     //$("#newGroup").append('<div class="imgBox"><div class="col-md-5 newThumbnail " style="background-image: url('+newBatch[prop].file+')"></div><div class="col-md-6"><div class="newImgName">'+prop+'</div><input type="text" id="'+prop+'input" placeholder="new tag" style="width: 100%; marin-top:12px" class="imgBox_input"><div class="newTags" id='+prop+'><div id='+prop+' class="groupTags"></div></div></div></div>');
+	var link = "https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/IMG0105JPG"+test
+	console.log(link)
 });
 
 function getName (str) {
