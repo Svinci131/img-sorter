@@ -1,0 +1,32 @@
+<!-- //https://googledrive.com/host/<folderID>/<filename> -->
+<html>
+  <head>
+  
+    <script src='javascript/googleapi.js'>
+    </script>
+      <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+  
+  </head>
+  <body>
+      <input type='file' id="imgInp" />
+      <img id="blah" src="#" alt="your image"/>
+    <div id="authorize-div" style="display: none">
+      <span>Authorize access to Drive API</span>
+      <!--Button for the user to click to initiate auth sequence -->
+      <button id="authorize-button" onclick="handleAuthClick(event)">
+        Authorize
+      </button>
+    </div>
+    <!-- <pre id="output"></pre> -->
+  
+    <script src="https://apis.google.com/js/client.js?onload=checkAuth">
+    </script>
+      <script src='javascript/backup.js'></script>
+   
+    
+    
+
+
+  </body>
+
+</html>

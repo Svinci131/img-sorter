@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+<head>
+   
+<meta name='viewport' content='width=device-width, initial-scale=1.0;'>
+    
+
+<title>img_namer</title>
+    
+<link rel='stylesheet' href='styles/normalize.css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<link rel='stylesheet' href='styles/skeleton.css'>
+<link rel="stylesheet" href="http://css-spinners.com/css/spinner/spinner.css" type="text/css">
+ <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oswald:700|Merriweather:700,700italic' rel='stylesheet' type='text/css'>
+<link rel='stylesheet' href='styles/main.css'>
+<script src='javascript/googleapi.js'></script>
+<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+</head>
+
+<body>
+	<div class="howTo invisible" id="search_modal">
+		<div id="first"class="modal_child invisible">
+			<p>Hello, Welcome to the BLS marketing image database. 
+			Let's start our tutorial, by searching by tag!</p>
+			<button class="next">Next</button>
+		</div>
+		<div id="second"class="invisible modal_child">
+			<p>Let's say I'm looking for some pictures of our dean Nick Allard with students and professors. I would click words like Nick or Nick Allard, Students, and Professors. </p>
+		<!-- 	<em>(Press next to see a demo search.)</em><br> -->
+			<button class="next">Next</button>
+		</div>
+		<div id="third" class="invisible modal_child"><!-- onload -->
+			<p>All the images that have any of the selected tags will show up here. Pictures with all three tags will be in front of images with one or two tags.</p>
+			<button class="next">Next</button>
+		</div>
+		<div id="fourth" class="invisible modal_child"><!-- onload -->
+			<p>If I see an image I want to use I can press the download icon.
+			</p>
+			<p>Try clicking the download icon on the first image, then hit next.</p>
+			<button class="next">Next</button>
+		</div>
+	</div>
+
+	<header>
+			<ul class="nav">
+				<li role="presentation" class="nav_logo"><a><img src="imgs/BLS_logo_primary_white.png"  width="80%" height="auto"></a></li>
+				<li role="presentation" class="nav_logo_icon"><a><img src="imgs/BLS_icon_white.png"  width="20%" height="auto"></a></li>
+	  			<li role="presentation" class="nav__item" id="demo"><a href="#">How to Use</a></li>
+	  			<li role="presentation" class="nav__item"><a href="createalbum.html">Upload</a></li>
+	  		</ul> 
+	</header><!-- header -->
+	<div class="container-fluid">
+		<div id="loading">
+			<div class="spinner-loader">Loading…</div>
+		</div>
+		<div class="row">
+			<div class="tags">
+			</div>
+		</div>
+		<div class="thumbnails" id="fileList">
+		</div><!--thumbnails-->
+ 	</div><!--container-->
+
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+<!-- <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script> -->
+<script src='javascript/search.js'></script>
+<script src='javascript/howToUse.js'></script>
+
+
+
+</body>
+<footer> 
+	<p>This website was built by Samantha Vinci. To see more of my work visit my 
+	<a href="https://github.com/svinci131">git hub.</a>
+	</p>  
+</footer>
+
+</html>
+
