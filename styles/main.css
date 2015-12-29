@@ -4,10 +4,11 @@
 fieldset, label { margin: 0; padding: 0; }
 
 body {
-	/*font-family: 'Merriweather Light 300', 'Times New Roman', serif;*/
+	/*font-family: 'Merriweather Light 300', serif;*/
 	/*font-family: "Hoefler Text A","Hoefler Text B",serif;*/
-	font-family:"Whitney SSm A","Whitney SSm B",sans-serif;
+	font-family: "Whitney SSm A","Whitney SSm B",sans-serif;
 	line-height: 50px;
+	font-size: 14px;
 	/*background-color: #e8eded;"Whitney SSm A","Whitney SSm B",sans-serif*/
 	background-color: 	#efeeeb;
 	
@@ -39,11 +40,13 @@ ul {
 			background-color: #a51c30;
 			display: inline-block;
 			text-transform: uppercase;
+			font-family:"Whitney SSm A","Whitney SSm B",sans-serif;
 
 		}
 		.nav>li {
 		    position: relative;
 		    display: inline-block;
+
 		}
 		.navbar-default .navbar-nav>li>a, a{
 		    color: white;
@@ -80,16 +83,12 @@ ul {
 			background-color: white;
 			padding:1%;
 		}
-
-		.tags {
-			background-color: white;
-			padding:1%;
-		}
 		.tag {
 			background-color: white;
 			color: rgb(172, 32, 35);
 			border-color: rgb(172, 32, 35);
 			display: inline-block;
+			text-transform: capitalize;
 		}
 		.button-primary, button.button-primary, input[type="submit"].button-primary, input[type="reset"].button-primary, input[type="button"].button-primary {
 			color: #FFF;
@@ -124,7 +123,7 @@ ul {
 	}
 	.photo {
 		display: inline-block;
-		width:25%;
+		width:34%;
 		height:240px;
 		border-right: 1px solid white; 
 		border-bottom: 1px solid white; 
