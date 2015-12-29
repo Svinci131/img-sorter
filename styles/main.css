@@ -4,8 +4,14 @@
 fieldset, label { margin: 0; padding: 0; }
 
 body {
-	font-family: 'Merriweather Light 300', 'Times New Roman', serif;
-	background-color: #e8eded;
+	/*font-family: 'Merriweather Light 300', 'Times New Roman', serif;*/
+	/*font-family: "Hoefler Text A","Hoefler Text B",serif;*/
+	font-family:"Whitney SSm A","Whitney SSm B",sans-serif;
+	line-height: 50px;
+	/*background-color: #e8eded;"Whitney SSm A","Whitney SSm B",sans-serif*/
+	background-color: 	#efeeeb;
+	
+
 }
 
 ul {
@@ -30,8 +36,9 @@ ul {
 
 		header {
 			width:100%;
-			background-color: white;
+			background-color: #a51c30;
 			display: inline-block;
+			text-transform: uppercase;
 
 		}
 		.nav>li {
@@ -39,7 +46,7 @@ ul {
 		    display: inline-block;
 		}
 		.navbar-default .navbar-nav>li>a, a{
-		    color: black;
+		    color: white;
 		}
 		.navbar-default {
 		    background-color: rgb(172, 32, 35);
@@ -47,8 +54,10 @@ ul {
 		}
 		.nav__item{
 			color:white;
-			font-size:14pt;
+			font-size: 16px;
 			float: right;
+			vertical-align: baseline;
+			font-weight: bold;
 		}
 		.nav_logo {    
 		    width: 30%;
