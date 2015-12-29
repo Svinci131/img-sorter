@@ -8,6 +8,7 @@ var newBatch = {}
 var currentTags = [];
 var individTags = [];
 var groupDeleted = [];
+var isSaved = false;
 ///////////////////// 
 
 ////save tags to fire base 
@@ -45,11 +46,22 @@ $("#save").on ("click",function() {
 
 		});
 	});
+
+	if (alert("Your changes have been saved")){
+		isSaved = true;
+	}
 });
 //exit
 $("#done").on ("click",function() {
-	if (confirm("Are you sure you're done?")) {	
+	if (isSaved === true) {
+		if (confirm("Are you sure you're done?")) {	
 		window.location.replace("index.html");
+		}
+	}
+	else {
+		if (confirm("You have unsaved changes. Are you sure you're done?")) {	
+			window.location.replace("index.html");
+		}
 	}
 })
 
@@ -103,6 +115,7 @@ $('input').change(function() {
 //checks to see if grouptags are deleted and if not adds to Img.objtags 
 //renders objtags 
 function preview () {
+	isSaved = false;
   	$("#newGroup").empty()
 	  	for (prop in newBatch) {
 	  	$("#newGroup").append('<div class="imgBox"><div class="imgBox_photo " style="background-image: url('+newBatch[prop].file+')"></div><div class="imgBox_info"><div class="newImgName">'+prop+'</div><input type="text" id="'+prop+'input" placeholder="new tag" style="width: 100%; class="imgBox_input"><div class="newTags" id='+prop+'><div id='+prop+' class="groupTags"></div></div></div></div>');
@@ -137,6 +150,7 @@ function preview () {
 
 //delete tags from spefic images 
 $( "#newGroup" ).click( function( event ) {
+	isSaved = false;
 	var id = event.target.id
 	if (event.target.id.substr(id.length - 5) !== "input"){
 		var obj = event.target.id.substring(0, event.target.id.indexOf('//'))
@@ -199,7 +213,7 @@ function getName (str) {
 
 
 function renderTag (parent, tag) {
-	$("#"+parent).append ("<button class='btn btn-default btn-xs tag'>"+tag+"<span id ='"+parent+"//"+tag+"'class='remove'>      x</span></button>")	
+	$("#"+parent).append ("<button class='btn btn-default btn-xs tag'><span class='tag_name'>"+tag+"</span><span id ='"+parent+"//"+tag+"'class='remove'>      x</span></button>")	
 	// $("#fileList").append("<div class='photo'><img src="+src+" class=thumbnail> <ul>"+name+"<li>"+num+"</li></li> ")
 }
 ///create url- insert with google api
