@@ -61,41 +61,34 @@
 			<button class="next">Next</button>
 		</div>
 	</div>
-	<div class="container-fluid">
-		<div class="upload_header">
+	<div>
+		<!-- <div class="upload_header">
 			<img src="imgs/BLS_logo_primary_red.png" width="20%" height="auto">
 		</div><!-- header -->
 		
-		<div class="addImg">			
-			<div class="col-md-3">
-				<a href="#" onclick="document.getElementById('fileID').click(); return false;"/>
-					<button  id="upload" class="btn btn-default btn-file">upload
+		<div class="container">			
+			<div class="addImg left_col">
+				<img class="logo" src="imgs/BLS_logo_primary_red.png"> 
+				<div class="addImg_buttons">
+					<a href="#" onclick="document.getElementById('fileID').click(); return false;"/>
+						<button  id="upload" class="btn btn-default btn-file">upload
+						</button>
+					</a>
+					<button id="save" class="btn btn-default">save
 					</button>
-				</a>
-				<button id="save" class="btn btn-default">save
-				</button>
-				<button id="done" class="btn btn-primary">done
-				</button>
-				<input type="file" id="fileID" style="visibility: hidden;"/>
-				<!-- styling file input -->
-				<label for="inputEmail3" class="control-label"></label>
-				<input type='text'  id="tagInput" placeholder=" ablum tags">
-				<form class="form-inline">
-	  				<!-- <div class="form-group">
-					    <label for="inputEmail3" class="control-label">Create New Tag</label>
-					    
-					    </div>
-	  				</div> -->
-	  			</form>
-	  			<ul class="list-group"id="groupTags"></ul>
-	  			
-	    	</div>
+					<button id="done" class="btn btn-primary">done
+					</button>
+					<input type="file" id="fileID" style="visibility: hidden;"/>
 
-	    	<div class="col-md-6"><!-- not working? -->
-	    		<!-- <div class="current_tags"></div>  -->
-	    		<div class="row current_thumbnails" id="newGroup">
-	    			<div>
+					<input type='text'  id="tagInput" placeholder="Ablum tags">
+		  			<ul class="list-group"id="groupTags"></ul>
 
+		  		</div>
+		    </div>
+		
+
+	    	<div class="right_col">
+	    		<div class="current_thumbnails" id="newGroup">
 	    		</div>
 	    	</div>
 		</div><!--addImgs-->

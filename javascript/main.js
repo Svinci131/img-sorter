@@ -105,7 +105,8 @@ $('input').change(function() {
 function preview () {
   	$("#newGroup").empty()
 	  	for (prop in newBatch) {
-	  	$("#newGroup").append('<div class="imgBox"><div class="col-md-5 newThumbnail " style="background-image: url('+newBatch[prop].file+')"></div><div class="col-md-6"><div class="newImgName">'+prop+'</div><input type="text" id="'+prop+'input" placeholder="new tag" style="width: 100%; marin-top:12px" class="imgBox_input"><div class="newTags" id='+prop+'><div id='+prop+' class="groupTags"></div></div></div></div>');
+	  	$("#newGroup").append('<div class="imgBox"><div class="col-md-5 imgBox_photo " style="background-image: url('+newBatch[prop].file+')"></div><div class="imgBox_info"><div class="newImgName">'+prop+'</div><input type="text" id="'+prop+'input" placeholder="new tag" style="width: 100%; class="imgBox_input"><div class="newTags" id='+prop+'><div id='+prop+' class="groupTags"></div></div></div></div>');
+	  	//$("#newGroup").append('<div class="imgBox"><div class="col-md-5 newThumbnail " style="background-image: url('+newBatch[prop].file+')"></div><div class="newTag_info"><div class="newImgName">'+prop+'</div><input type="text" id="'+prop+'input" placeholder="new tag" style="width: 100%; marin-top:12px" class="imgBox_input"><div class="newTags" id='+prop+'><div id='+prop+' class="groupTags"></div></div></div></div>');
 		$("#"+prop).each (function(){
 			newBatch[prop].gtags.forEach (function (i){
 			//goes through the gtags(current tags at time it was uploaded)
@@ -210,9 +211,7 @@ function insertFile(fileData, callback) {
 	const boundary = '-------314159265358979323846';
 	const delimiter = "\r\n--" + boundary + "\r\n";
 	const close_delim = "\r\n--" + boundary + "--";
-
 	var reader = new FileReader();
-
 	reader.readAsBinaryString(fileData.files[0]);
 	var link = ($('input[type=file]').val())
 	var name = getName(link)
@@ -259,3 +258,8 @@ function insertFile(fileData, callback) {
 	  request.execute(callback);
 	}
 }
+
+// $("#newGroup").append('<div class="imgBox"><div class="col-md-5 newThumbnail " style="background-image: url('+newBatch[prop].file+')"></div><div class="newTag_info"><div class="newImgName">'+prop+'</div><input type="text" id="'+prop+'input" placeholder="new tag" style="width: 100%; marin-top:12px" class="imgBox_input"><div class="newTags" id='+prop+'><div id='+prop+' class="groupTags"></div></div></div></div>');
+		
+
+// $("#newGroup").append('<div class="imgBox"><div class="col-md-5 imgBox_photo " style="background-image: url('+newBatch[prop].file+')"></div><div class="imgBox_info"><div class="newImgName">blah</div><input type="text" id="'+prop+'input" placeholder="new tag" style="width: 100%; class="imgBox_input"><div class="newTags" id='+prop+'><div id='+prop+' class="groupTags"></div></div></div></div>');
