@@ -141,7 +141,6 @@ $( "#newGroup" ).click( function( event ) {
 	if (event.target.id.substr(id.length - 5) !== "input"){
 		var obj = event.target.id.substring(0, event.target.id.indexOf('//'))
 		var tag = event.target.id.substring((event.target.id.indexOf('//') + 2), event.target.id.length)
-		
 		var otags = newBatch[obj].objTags
 		var deleted = newBatch[obj].deleted
 		var added = newBatch[obj].added
@@ -195,7 +194,6 @@ function getName (str) {
 	var end = str.length
 	var title = str.slice(start+=1).replace(/[.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"")
 		title=title.replace(/ /g,"_")
-
 	return title
 }
 
@@ -204,8 +202,6 @@ function renderTag (parent, tag) {
 	$("#"+parent).append ("<button class='btn btn-default btn-xs tag'>"+tag+"<span id ='"+parent+"//"+tag+"'class='remove'>      x</span></button>")	
 	// $("#fileList").append("<div class='photo'><img src="+src+" class=thumbnail> <ul>"+name+"<li>"+num+"</li></li> ")
 }
-
-
 ///create url- insert with google api
 function insertFile(fileData, callback) {
 	const boundary = '-------314159265358979323846';
@@ -258,8 +254,3 @@ function insertFile(fileData, callback) {
 	  request.execute(callback);
 	}
 }
-
-// $("#newGroup").append('<div class="imgBox"><div class="col-md-5 newThumbnail " style="background-image: url('+newBatch[prop].file+')"></div><div class="newTag_info"><div class="newImgName">'+prop+'</div><input type="text" id="'+prop+'input" placeholder="new tag" style="width: 100%; marin-top:12px" class="imgBox_input"><div class="newTags" id='+prop+'><div id='+prop+' class="groupTags"></div></div></div></div>');
-		
-
-// $("#newGroup").append('<div class="imgBox"><div class="col-md-5 imgBox_photo " style="background-image: url('+newBatch[prop].file+')"></div><div class="imgBox_info"><div class="newImgName">blah</div><input type="text" id="'+prop+'input" placeholder="new tag" style="width: 100%; class="imgBox_input"><div class="newTags" id='+prop+'><div id='+prop+' class="groupTags"></div></div></div></div>');
