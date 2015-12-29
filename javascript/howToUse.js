@@ -15,14 +15,19 @@ $(".next").click (function (){
 
 	var prev = $(this).parent().attr("id")
 	var next = ($(this).parent().next().attr("id"))
-	//alert(prev)
-
+	var viewportWidth = $("body").innerWidth();
 	$("#"+prev).addClass("invisible")
 	$("#"+next).removeClass("invisible")
 
 	if (next === "second"){
 		third ();
-		$(".howTo").css("left", "600px")
+		var amount = $(".howTo").css("left")+100
+		if (viewportWidth <= 540){
+			$(".howTo").css("left", amount)
+		}
+		// else {
+		// 	$(".howTo").css("left", "10%")
+		// }
 	}
 	if (next === third) {
 		$(".howTo").css("left", "600px")
@@ -34,30 +39,32 @@ $(".next").click (function (){
 	if (prev === "fifth") {
 		$("#upload").removeClass("shadow")
 		highlight ($("#tagInput"))
-		$(".howTo").css("left", "190px")
+		$(".howTo").css("left", "15%")
 		
 	}
 	if (prev === "sixth") {
 		$("#tagInput").removeClass("shadow")
 		highlight ($(".imgBox_info input").eq(0))
-		$(".howTo").css("left", "400px")
-		$(".howTo").css("top", "120px")
+		$(".howTo").css("left", "15%")
+		$(".howTo").css("top", "20%")
 
 	}
 	if (prev === "seventh") {
 		$(".imgBox_info input").eq(0).removeClass("shadow")
 		highlight($(".btn-xs").eq(0))
-		$(".howTo").css("left", "500px")
+		// $(".howTo").css("left", "500px")
 		$(".howTo").css("top", "120px")
 	}
 	if (prev === "eighth") {
 		$(".btn-xs").eq(0).removeClass("shadow")
 		highlight($(".list-group-item").eq(0))
-		$(".howTo").css("left", "200px")
+		// $(".howTo").css("left", "200px")
+		$(".howTo").css("top", "5%")
 	}
 	if (prev === "ninth") {
 		($(".list-group-item").eq(0)).removeClass("shadow")
 		highlight($("#save").eq(0))
+
 		ref.update ({demo: false});
 		window.location.replace("index.html");
 		$(".howTo").css("left", "300px")
