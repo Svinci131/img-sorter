@@ -244,6 +244,13 @@ ul {
 	    background-position: 50% 50%;
 
 	}
+	.newTags .tag {
+		max-width: 95%;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    word-break: break-all;
+	    display: block;
+	}
 	/*background-image: url("http://i.stack.imgur.com/2OrtT.jpg");
 	    background-size: cover;
 	    background-repeat: no-repeat;
