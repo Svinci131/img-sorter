@@ -12,11 +12,6 @@ var searchResults = {};
 // 	renderThumnail ($("#mostPopular"), snapshot.key(), snapshot.val().file, snapshot.val().number)
 // 	console.log(snapshot.key() + " has " + snapshot.val().number + " many tags");
 // });
-//on start put something somewhere
-//say do the function 
-//then clear 
-//then I can say if something isn't there 
-
 $(".tags").on ('click', '.tag', function() { //when a tag is clicked it runs search and renders the imgaes
 	if ($(this).hasClass( "button-primary" ) === true) {
 		$(this).removeClass('button-primary')
@@ -37,10 +32,6 @@ $(".tags").on ('click', '.tag', function() { //when a tag is clicked it runs sea
 		Search ()
 		
 	}
-	
-
-	
-	
 });//tags.on
 
 function updateTags(){
@@ -139,7 +130,5 @@ tagsRef.orderByValue().on("value", function(snapshot) {//when a value changes
 });
 
 function renderThumnail (location, name, num) {
-	location.append("<div class='photo'><div class=thumbnail_label><span class='download glyphicon glyphicon-download-alt'></div><img src='https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/"+name+"' class=thumbnail id="+name+"></div>")
-
-
+	location.append("<div class='photo'><div class=thumbnail_label><span class='download glyphicon glyphicon-download-alt'></div><img src='https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/"+name+"' class=thumbnail id="+name+"></div>");
 }
