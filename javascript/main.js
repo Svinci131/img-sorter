@@ -82,19 +82,20 @@ $('input').change(function() {
 			img.onload = function() {
 				var imgObj = imgRef.child(""+name);
 			  	  isDuplicate = false;
-			  	   newBatch[name] = {
-				  	file: fr.result,
-				  	name:name,
-				  	gtags: currentTags,
-				  	objTags:[],
-				  	deleted:[],
-				  	added:[name]//https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/
-					};
+			  	  
 
 				  imgRef.once("value", function(snapshot) {
 					var data = snapshot.val();	
 					if (typeof data[name] === "undefined") {
 						console.log(data[name])
+						newBatch[name] = {
+						  	file: fr.result,
+						  	name:name,
+						  	gtags: currentTags,
+						  	objTags:[],
+						  	deleted:[],
+						  	added:[name]//https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/
+						};
 						insertFile(self);
 				 		imgObj.set ({name:name, tags:{name:name}});
 		 		  		preview ()
@@ -210,7 +211,6 @@ function getName (str) {
 		title=title.replace(/ /g,"_")
 	return title
 }
-
 
 function renderTag (parent, tag) {
 	$("#"+parent).append ("<button class='btn btn-default btn-xs tag'><span class='tag_name'>"+tag+"</span><span id ='"+parent+"//"+tag+"'class='remove'>      x</span></button>")	
