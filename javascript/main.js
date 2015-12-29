@@ -105,7 +105,7 @@ $('input').change(function() {
 function preview () {
   	$("#newGroup").empty()
 	  	for (prop in newBatch) {
-	  	$("#newGroup").append('<div class="imgBox"><div class="col-md-5 imgBox_photo " style="background-image: url('+newBatch[prop].file+')"></div><div class="imgBox_info"><div class="newImgName">'+prop+'</div><input type="text" id="'+prop+'input" placeholder="new tag" style="width: 100%; class="imgBox_input"><div class="newTags" id='+prop+'><div id='+prop+' class="groupTags"></div></div></div></div>');
+	  	$("#newGroup").append('<div class="imgBox"><div class="imgBox_photo " style="background-image: url('+newBatch[prop].file+')"></div><div class="imgBox_info"><div class="newImgName">'+prop+'</div><input type="text" id="'+prop+'input" placeholder="new tag" style="width: 100%; class="imgBox_input"><div class="newTags" id='+prop+'><div id='+prop+' class="groupTags"></div></div></div></div>');
 	  	//$("#newGroup").append('<div class="imgBox"><div class="col-md-5 newThumbnail " style="background-image: url('+newBatch[prop].file+')"></div><div class="newTag_info"><div class="newImgName">'+prop+'</div><input type="text" id="'+prop+'input" placeholder="new tag" style="width: 100%; marin-top:12px" class="imgBox_input"><div class="newTags" id='+prop+'><div id='+prop+' class="groupTags"></div></div></div></div>');
 		$("#"+prop).each (function(){
 			newBatch[prop].gtags.forEach (function (i){

@@ -20,19 +20,23 @@ $(".next").click (function (){
 	$("#"+prev).addClass("invisible")
 	$("#"+next).removeClass("invisible")
 
-	if (next === "third"){
+	if (next === "second"){
 		third ();
 	}
 	if (prev === "fourth"){
 		window.location.replace("createalbum.html");
+
 	}
 	if (prev === "fifth") {
 		$("#upload").removeClass("shadow")
 		highlight ($("#tagInput"))
+		$(".howTo").css("left", "190px")
+		
 	}
 	if (prev === "sixth") {
 		$("#tagInput").removeClass("shadow")
 		highlight ($(".imgBox_input"))
+
 	}
 	if (prev === "seventh") {
 		$(".imgBox_input").removeClass("shadow")

@@ -139,11 +139,13 @@ ul {
 	.howTo {
 		position: absolute;
 		top:150px;
-		left:550px; 
+		left:500px; 
 		padding:10px;
 		width:300px;
 		z-index: 99999;
+		background-color: red;
 	}
+
 
 	.modal_child {
 		border:1px solid black;
@@ -188,10 +190,12 @@ ul {
 		border: 1px solid white;
 		padding: 10px;
 	}
+
 	.imgBox_info {
 		width: 45%;
 	    display: inline-block;
 	    margin-left: 10px;
+	    vertical-align: top;
 	}
 
 	.left_col {
@@ -225,14 +229,20 @@ ul {
 		width:100%;
 		height: 30px;
 		padding:1%;
-	/*	border:1px solid grey;*/
-		background-color: white
+		background-color: white;
+		overflow: hidden;
+    	text-overflow: ellipsis;
+    	word-break: inherit;
+	
 	}
 	.imgBox_photo {
+    	width: 40%;
 		height: 180px;
+		display: inline-block;
 	    background-size: cover;
 	    background-repeat: no-repeat;
 	    background-position: 50% 50%;
+
 	}
 	/*background-image: url("http://i.stack.imgur.com/2OrtT.jpg");
 	    background-size: cover;
@@ -257,6 +267,35 @@ ul {
 
 	.inline-block{
 		display:inline-block;
+	}
+
+	/*MEDIA QUERIES*/
+	@media (max-width: 680px) {
+		button  {
+			display:block;
+		}
+		.imgBox_photo {
+	    	width: 40%;
+			height: 150px;
+			display: inline-block;
+		    background-size: cover;
+		    background-repeat: no-repeat;
+		    background-position: 50% 50%;
+		}
+		.imgBox_info {
+			width: 40%;
+		    display: inline-block;
+		    margin-left: 0px;
+		    vertical-align: top;
+		}
+		.newImgName {
+			width:100%;
+			height: 30px;
+			padding:1%;
+			font-size: 11px;
+			background-color: white
+
+		}
 	}
 	
 /****** Style Star Rating Widget *****/
@@ -296,4 +335,6 @@ ul {
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
 
 /***********************/
+
+
 
