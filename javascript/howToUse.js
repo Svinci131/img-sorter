@@ -32,7 +32,15 @@ $(".next").click (function (){
 	if (next === third) {
 		$(".howTo").css("left", "600px")
 	}
+	if (prev === "third") {
+		console.log("foo")
+		highlight ($(".download").eq(0))
+		$(".download").eq(0).css ("background-color","#a51c30")
+		$(".download").eq(0).click(); 
+	}
 	if (prev === "fourth"){
+		$(".download").eq(0).removeClass("shadow")
+		$(".download").eq(0).css ("background-color","#89959f")
 		window.location.replace("createalbum.html");
 
 	}
