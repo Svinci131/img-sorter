@@ -161,9 +161,9 @@ ul {
 /*HOW TO STYLES*/
 	.shadow {
 		/*#a51c30*/
-		-webkit-box-shadow: 10px 10px 129px 32px rgba(165,28,48,1);
-		-moz-box-shadow: 10px 10px 129px 32px rgba(165,28,48,1);
-		box-shadow: 10px 10px 129px 32px rgba(165,28,48,1);
+		-webkit-box-shadow: 4px 4px 25px 4px rgba(30,30,30,1);
+		-moz-box-shadow: 4px 4px 25px 4px rgba(30,30,30,1);
+		box-shadow: 4px 4px 25px 4px rgba(30,30,30,1);
 	}
 	.left {
 			float: right;
@@ -212,6 +212,16 @@ ul {
 		text-transform: uppercase;
 		font-weight: 600;
 		font-size: 12px;
+	}
+	#upload, #save {
+		background-color: white;
+    	color: rgb(172, 32, 35);
+    	border-color: rgb(172, 32, 35);
+	}
+	#done {
+		background-color: rgb(172, 32, 35);
+    	color: white;
+    	border-color: rgb(172, 32, 35);
 	}
 	.addImg_buttons {
 		display:block;
@@ -379,7 +389,7 @@ ul {
 	}
 	/*footer*/
 	/*MEDIA QUERIES*/
-	@media (max-width: 735px) {
+	@media (max-width: 761px) {
 		#upload {
 			width: 90%;
 			margin-bottom:5px;
