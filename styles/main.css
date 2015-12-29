@@ -44,10 +44,15 @@ ul {
 			line-height: 50px;
 
 		}
+		.nav>li>a>:hover {
+   			/*display: inline;*/
+    		background: none;
+		}
 		.nav>li {
 		    position: relative;
 		    display: inline-block;
 		    margin-bottom: 0px; 
+		    font-size: 12px;
 
 		}
 		.navbar-default .navbar-nav>li>a, a{
@@ -63,12 +68,17 @@ ul {
 			float: right;
 			vertical-align: baseline;
 			font-weight: bold;
-			
-		
 		}
 		.nav_logo {    
 		    width: 30%;
 		    border-right: 1px solid white;
+		} 
+
+		.nav>.nav_logo_icon {    
+		   display: none;
+		   width: auto;
+    	  /* width: 100px;*/
+    	   width: 35%;
 		} 
 	/*INDEX-HEADER*/
 
@@ -120,14 +130,15 @@ ul {
 	.thumbnails {
 		margin-top: 1%;
 		border: 1px solid white;
+		display: flex;
 	}
 	.thumbnail {
 		width:75%;
 		height:auto;
-		margin-left: 15%;
+		margin-left: 12%;
 	}
 	.photo {
-		display: inline-block;
+	/*	display: inline-block;*/
 		width:34%;
 		height:240px;
 		border-right: 1px solid white; 
@@ -135,7 +146,7 @@ ul {
 	}
 	.thumbnail_label{
 		padding: 10px;
-		margin-bottom: 20%;
+		margin-bottom: 9%;
 	}
 
 /*HOW TO STYLES*/
@@ -412,9 +423,75 @@ ul {
 		.current_thumbnails {
 		 margin-top: 0%; 
 		}
+		.nav>li {
+			font-size: 12px;
+		}
 
 	}
-	
+	@media (max-width: 420px) {
+		.photo {
+			width:100%;
+			height: 150px;
+		}
+		.thumbnails {
+			display: initial;
+		}
+		.nav>li {
+			font-size: 10px;
+		}
+		.nav_logo {
+    		width: 57%;
+    	}
+	}
+	@media (max-width: 398px) {
+		.nav .nav_logo_icon {
+			display:inline-block;
+			height:auto;
+		}
+		.nav .nav_logo {
+			display:none;
+		}
+		.nav>.nav_logo_icon>a>img {    
+    	   width: 50%;
+		} 
+		.photo {
+			height: 150px;
+		}
+	}
+	@media (max-width: 284px) {
+		.nav .nav_logo_icon {
+			display:inline-block;
+			height:auto;
+			width: 20%;
+
+		}
+		.nav .nav_logo {
+			display:none;
+		}
+		.nav>.nav_logo_icon>a>img {    
+    		width: 200%;
+    		padding-bottom: 5px;
+		} 
+		.nav>li {
+		    position: relative;
+		    display: inline-block;
+		    margin-bottom: 0px; 
+		    font-size: 10px;
+
+		}
+	}
+	@media (max-width: 208px) {
+		.nav>li {
+		    font-size: 8px;
+		}
+		.nav .nav_logo_icon {
+			width: 20%;
+		}
+		.nav>.nav_logo_icon>a>img { 
+			width: 250%;
+		}
+
+	}
 /****** Style Star Rating Widget *****/
 	.rating { 
 	  border: none;
