@@ -22,6 +22,10 @@ $(".next").click (function (){
 
 	if (next === "second"){
 		third ();
+		$(".howTo").css("left", "600px")
+	}
+	if (next === third) {
+		$(".howTo").css("left", "600px")
 	}
 	if (prev === "fourth"){
 		window.location.replace("createalbum.html");
@@ -35,22 +39,29 @@ $(".next").click (function (){
 	}
 	if (prev === "sixth") {
 		$("#tagInput").removeClass("shadow")
-		highlight ($(".imgBox_input"))
+		highlight ($(".imgBox_info input").eq(0))
+		$(".howTo").css("left", "400px")
+		$(".howTo").css("top", "120px")
 
 	}
 	if (prev === "seventh") {
-		$(".imgBox_input").removeClass("shadow")
+		$(".imgBox_info input").eq(0).removeClass("shadow")
 		highlight($(".btn-xs").eq(0))
+		$(".howTo").css("left", "500px")
+		$(".howTo").css("top", "120px")
 	}
 	if (prev === "eighth") {
 		$(".btn-xs").eq(0).removeClass("shadow")
 		highlight($(".list-group-item").eq(0))
+		$(".howTo").css("left", "200px")
 	}
 	if (prev === "ninth") {
 		($(".list-group-item").eq(0)).removeClass("shadow")
 		highlight($("#save").eq(0))
 		ref.update ({demo: false});
 		window.location.replace("index.html");
+		$(".howTo").css("left", "300px")
+		$(".howTo").css("top", "90px")
 	}
 });
 

@@ -181,7 +181,7 @@ $("#newGroup" ).on('keypress','.imgBox_input', function (e) {
 	   if (e.keyCode === 13) {
 	   		var tag = ($(this).val()).toLowerCase();
 	   		tag = getName (tag)
-	   		//console.log(tag)
+	   		console.log(tag)
 	   		individTags.push(tag)
 	   		newBatch[parString].added.push($(this).val())
 	   		preview();
