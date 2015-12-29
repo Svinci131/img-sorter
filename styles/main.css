@@ -4,12 +4,12 @@
 fieldset, label { margin: 0; padding: 0; }
 
 body {
-	/*font-family: 'Merriweather Light 300', serif;*/
+	/*font-family: ‘Merriweather’, Georgia, serif;*/
 	/*font-family: "Hoefler Text A","Hoefler Text B",serif;*/
 	font-family: "Whitney SSm A","Whitney SSm B",sans-serif;
-	line-height: 50px;
-	font-size: 14px;
-	/*background-color: #e8eded;"Whitney SSm A","Whitney SSm B",sans-serif*/
+	font-size: 16px;
+/*	font-weight: 600;*/
+	line-height: 2;
 	background-color: 	#efeeeb;
 	
 
@@ -41,6 +41,7 @@ ul {
 			display: inline-block;
 			text-transform: uppercase;
 			font-family:"Whitney SSm A","Whitney SSm B",sans-serif;
+			line-height: 50px;
 
 		}
 		.nav>li {
@@ -82,6 +83,7 @@ ul {
 		.tags {
 			background-color: white;
 			padding:1%;
+			font-family: "Whitney SSm A","Whitney SSm B",sans-serif;
 		}
 		.tag {
 			background-color: white;
@@ -155,7 +157,7 @@ ul {
 		top:150px;
 		left:350px; 
 		padding:10px;
-		width:300px;
+		width:350px;
 		z-index: 99999;
 		/*background-color: red;*/
 	}
