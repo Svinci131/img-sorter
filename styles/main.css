@@ -207,9 +207,15 @@ ul {
 		height:auto;
 
 	}
-
+	.addImg_buttons button {
+		height: 40px;
+		text-transform: uppercase;
+		font-weight: 600;
+		font-size: 12px;
+	}
 	.addImg_buttons {
 		display:block;
+
 	}
 	.logo {
 		width:80%;
@@ -232,7 +238,7 @@ ul {
 	}
 
 	.imgBox_info {
-		width: 45%;
+		width: 52%;
 	    display: inline-block;
 	    margin-left: 10px;
 	    vertical-align: top;
@@ -260,6 +266,9 @@ ul {
 		display: block;
    		max-width: 80%;
     	margin-top: 4%;
+    	text-transform: uppercase;
+    	font-size: 12px;
+    	font-weight: bold;
 	}
 	
 	.newTags{
@@ -269,6 +278,9 @@ ul {
 		padding:1%;
 	/*	border:1px solid grey;*/
 		background-color: white
+	}
+	#tagInput {
+		width: 90%;
 	}
 	.glyphicon {
    	 	float: right;
@@ -285,8 +297,8 @@ ul {
 	
 	}
 	.imgBox_photo {
-    	width: 40%;
-		height: 180px;
+    	width: 45%;
+    	height: 191px;
 		display: inline-block;
 	    background-size: cover;
 	    background-repeat: no-repeat;
@@ -367,12 +379,29 @@ ul {
 	}
 	/*footer*/
 	/*MEDIA QUERIES*/
-	@media (max-width: 686px) {
+	@media (max-width: 735px) {
+		#upload {
+			width: 90%;
+			margin-bottom:5px;
+		}
+		#save, #done {
+			width: 44%;
+		}
+		.right_col {
+			left: 40%;
+		    width: 60%;
+		}
+		.left_col {
+		    width: 40%;
+		}
+	}
+	@media (max-width: 690px) {
 		.howTo {
 			left: 20%;
 			width: 55%;
 			font-size: 14px;
 		}
+		
 		button  {
 			display:block;
 		}
@@ -389,17 +418,17 @@ ul {
 		    margin-left: 8%;
 		}
 		.imgBox_photo {
-	    	width: 40%;
-			height: 161px;
+	    	width: 47%;
+			height: 178px;
 			display: inline-block;
 		    background-size: cover;
 		    background-repeat: no-repeat;
 		    background-position: 50% 50%;
 		}
 		.imgBox_info {
-			width: 58%;
+			width: 50%;
 		    display: inline-block;
-		    margin-left: 0px;
+		    margin-left: 7px;
 		    vertical-align: top;
 		    font-size: 10px;
 		}
@@ -413,12 +442,15 @@ ul {
 			height: 89px
 			overflow: scroll;
 		}
+
 	}
+
 	@media (max-width: 540px) {
 		.photo {
 		    display: inline-block;
 		    width: 90%;
 		}
+
 		.thumbnails {
 		    border: 0;
 		}
@@ -430,6 +462,14 @@ ul {
 		    height: auto;
 		    margin-left: 8%;
 		}
+		#done, #save {
+			width:auto;
+		}
+		.glyphicon {
+		    float: right;
+		    padding: 6px;
+		    padding-left: 14px;
+		}
 		.left_col {
 			position: initial;
 		    width: 100%;
@@ -438,18 +478,31 @@ ul {
 		    padding-top: 2%;
 		    padding-left: 3%;
 		    margin:0px;
+		    padding-bottom: 3%;
 		}
 		.right_col {
 			position: initial;
 		    width: 100%;
 		    height: 100%;
-		    background-color: #e8eded;
+		   /* background-color: #e8eded;*/
 		    margin:0px;
 		    padding-top: 20px;
 
 		}
+		#tagInput {
+			float:right;
+		}
+		.addImg_buttons button {
+			height: 40px;
+			margin-right: 3px;
+		}
 		.addImg_buttons {
-		    padding-bottom: 20px;
+		    display: flex;
+		    margin-left: 2%;
+		    margin-right: 5%;
+		}
+		#fileID {
+			width:26%;
 		}
 		.container {
 		    padding: 0px; 
@@ -459,9 +512,21 @@ ul {
 		    width: 80%;
 		    height: auto;
 		    margin-bottom: 5%;
+		    margin-left: 2%;
 		}
 		.list-group {
     		margin-bottom: 0px; 
+    		margin-left: 2%;
+    		margin-right: 2%;
+		}
+		.list-group-item {
+			display: inline-block;
+			padding: 0px;
+			font-size: 14px;
+    		padding-left: 8px;
+
+		}
+		.list-group-item {
 		}
 		.current_thumbnails {
 		 margin-top: 0%; 
@@ -471,6 +536,25 @@ ul {
 		}
 
 	}
+	/*@media (max-width: 490px) {
+		.howTo {
+		    left: 6%;
+		    width:300px;
+		}
+		.photo {
+			width:100%;
+			height: 150px;
+		}
+		.thumbnails {
+			display: initial;
+		}
+		.nav>li {
+			font-size: 10px;
+		}
+		.nav_logo {
+    		width: 57%;
+    	}
+	}*/
 	@media (max-width: 420px) {
 		.howTo {
 		    left: 6%;
@@ -492,9 +576,30 @@ ul {
 	}
 	@media (max-width: 398px) {
 		.howTo {
-		    width:250px;
-		    left: 
+		    width:250px; 
 		}
+		.addImg_buttons {
+			display:inline-block;
+			width: 95%;
+		}
+		.addImg_buttons button {
+			margin-right: 3px;
+		}
+		
+		#fileID {
+			height: 10px;
+		}
+		#tagInput {
+		    float: none;
+		    width: 98%;
+		}
+		#done, #save {
+			float:right;
+		}
+		#upload {
+			width:auto;
+		}
+		
 		.nav .nav_logo_icon {
 			display:inline-block;
 			height:auto;
