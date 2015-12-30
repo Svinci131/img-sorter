@@ -47,16 +47,13 @@ $("#save").on ("click",function() {
 		});
 	});
 
-	if (alert("Your changes have been saved")){
-		isSaved = true;
-	}
+	isSaved = true;
 });
 //exit
 $("#done").on ("click",function() {
+	console.log(isSaved)
 	if (isSaved === true) {
-		if (confirm("Are you sure you're done?")) {	
 		window.location.replace("index.html");
-		}
 	}
 	else {
 		if (confirm("You have unsaved changes. Are you sure you're done?")) {	
