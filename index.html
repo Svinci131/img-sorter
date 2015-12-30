@@ -19,6 +19,13 @@
 </head>
 
 <body>
+	<div id="authorize-div" style="display: none">
+      <div>Authorize access to Drive API</div>
+      Button for the user to click to initiate auth sequence 
+      <button id="authorize-button" onclick="handleAuthClick(event)">
+        Authorize
+      </button>
+    </div>
 	<div class="howTo invisible" id="search_modal">
 		<div id="first"class="modal_child invisible">
 			<p>Hello, Welcome to the BLS marketing image database. 
@@ -66,6 +73,7 @@
  	</div><!--container-->
 
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+<script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
 <script src='javascript/search.js'></script>
 <script src='javascript/howToUse.js'></script>
 
