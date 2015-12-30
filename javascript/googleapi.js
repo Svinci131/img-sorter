@@ -1,4 +1,4 @@
- var CLIENT_ID = '808144924582-tdfd1k4h2duieo87h99qo54g87mjfabp.apps.googleusercontent.com';
+ var CLIENT_ID = 'AIzaSyBWjXufxRgy7K6dA3zn-xiv48IL_n6zJKI'; //'808144924582-tdfd1k4h2duieo87h99qo54g87mjfabp.apps.googleusercontent.com';
 
       var SCOPES = ['https://www.googleapis.com/auth/drive'];
 
