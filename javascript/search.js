@@ -62,7 +62,7 @@ function Search () { //pushes firebase img obj with any of the current tags into
 	// console.log(tags)
 	//if it's clicked stop it and run it again 
 	running = true;
-	($("#loading").css("visibility","visible"))
+	($("#loading").fadeOut('slow'))
 	console.log(running)
 	prevTags = tags
 	//console.log("search", tags)
