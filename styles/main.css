@@ -92,6 +92,9 @@ ul {
 		    text-decoration: none;
 		    background-color:  #a51c30!important;
 		}
+		.nav>.nav_logo_red {
+			display:none;
+		}
 		.nav>li {
 		    position: relative;
 		    display: inline-block;
@@ -182,21 +185,39 @@ ul {
 		/*background: white;#c8223a*/
 	}
 	.thumbnails {
+		margin-left: auto;
+    	margin-right: auto;
 		margin-top: 1%;
-		border: 1px solid white;
+		/*border: 1px solid white;*/
 		display: flex;
 	}
+/*	    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: relative;
+    top: 50%;
+    max-height: 100%;
+    max-width: 100%;
+    z-index: 2;*/
 	.thumbnail {
 		width:75%;
 		height:auto;
 		margin-left: 12%;
 	}
+	.img_holder {
+		
+	}
 	.photo {
 	/*	display: inline-block;*/
 		width:34%;
 		height:240px;
-		border-right: 1px solid white; 
-		border-bottom: 1px solid white; 
+		overflow: hidden;
+    	position: relative;
+    /*	width: 100%;*/
+		border: 1px solid white; 
+		/*border-bottom: 1px solid white; */
 	}
 	.thumbnail_label{
 		margin-bottom: 25%;
@@ -532,7 +553,7 @@ ul {
 		    border: 0;
 		}
 		.thumbnail_label {
-		    margin-bottom: 9%;
+    		margin-bottom: 30%;
 		}
 		.thumbnail {
 		    width: 85%;
@@ -632,12 +653,14 @@ ul {
 		    left: 6%;
 		    width:300px;
 		}
+
 		.photo {
 			width:100%;
 			height: 150px;
 		}
 		.thumbnails {
-			display: initial;
+			display: flex;
+    		
 		}
 		.nav>li {
 			font-size: 10px;
@@ -693,6 +716,14 @@ ul {
 		.photo {
 			height: 150px;
 		}
+		.thumbnails {
+			display: block;
+			margin-top: 5%;
+		}
+		.thumbnail_label {
+     		margin-bottom: 0px; 
+		}
+
 	}
 	@media (max-width: 320px) {
 		.about>h1 {
@@ -722,13 +753,45 @@ ul {
 		    font-size: 10px;
 
 		}
+		#upload {
+			margin-left: 0px;
+		}
+		.nav__item {
+			float:none;
+		}
+		.tag {
+			padding: 0px 8px;
+			margin-right: 2px;
+		}
+		.tag:last-child {
+			margin-right: 0px;
+		}
+		.tags {
+			padding-left:15px;
+			padding-right:5px;
+			padding-top:5px;
+		}
+		footer {
+			font-size: 9px;
+		}
 	}
+	@media (max-width: 271px) {
+		.nav .nav_logo_red {
+			display:block;
+			background-color: white;
+		}
 
+		.nav .nav_logo_icon {
+			display:none;
+		}
+	}
 	@media (max-width: 225px) {
 		.howTo {
 			width: 220px;
 			left:2%;
-
+		}
+		.nav .nav_logo_icon {
+			width:14%;
 		}
 
 	}
