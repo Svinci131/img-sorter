@@ -7,14 +7,11 @@ function start (first) {
 }
 $("._demo").click (function (){
 	ref.update ({demo: true});
-	if (window.location.pathname === "/Desktop/img_sorter/about.html"){
+	var path = findPath(window.location.pathname)
+	console.log(path)
+	if (path === "about"){
 		window.location.replace("index.html")
-	}
-	
-	// else {
-	// 	start("first");
-	// }
-	
+	}	
 });
 
 var holder = null;
@@ -99,13 +96,12 @@ function third () {//click the tags
 }
 
 ref.on("value", function(snapshot) {
-	console.log(window.location.url)
-	if (snapshot.val().demo !== false && window.location.pathname === "/Desktop/img_sorter/createalbum.html") {
+	var path = findPath(window.location.pathname)
+	if (snapshot.val().demo !== false && path === "createalbum") {
 		start("fifth");
 		highlight ($("#upload"));
 	}
-	else if (snapshot.val().demo !== false && window.location.pathname === "/Desktop/img_sorter/index.html"){
-
+	else if (snapshot.val().demo !== false && path === "index"){
 		start("first")
 	
 	}
@@ -122,7 +118,11 @@ function highlight (el) {
 	el.eq(0).addClass("shadow")
 }
 
-
+function findPath (url){
+	var path = url
+	var path = path.slice ((path.lastIndexOf("/")+1), path.lastIndexOf(".") )
+	return path;
+}
 //show and hide a bunch of modals on next click 
 //force state clicked 
 //save a thing that lets you know your in a window 
