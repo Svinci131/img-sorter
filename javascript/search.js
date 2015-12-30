@@ -62,7 +62,7 @@ function Search () { //pushes firebase img obj with any of the current tags into
 	// console.log(tags)
 	//if it's clicked stop it and run it again 
 	running = true;
-	($("#loading").fadeOut('slow'))
+	$("#loading").css('display', 'flex');
 	console.log(running)
 	prevTags = tags
 	//console.log("search", tags)
@@ -106,7 +106,7 @@ function Search () { //pushes firebase img obj with any of the current tags into
 	  	console.log(snapshot.key() + " has " + snapshot.val().number + " many tags");
 	});
 	running = false;
-	($("#loading").css("visibility","hidden"))
+	($("#loading").css("display","none"))
 
 	if ($("#third").hasClass ("invisible") === false) {
 		$("#third").addClass("invisible");
