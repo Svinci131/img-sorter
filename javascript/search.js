@@ -12,6 +12,12 @@ var searchResults = {};
 // 	renderThumnail ($("#mostPopular"), snapshot.key(), snapshot.val().file, snapshot.val().number)
 // 	console.log(snapshot.key() + " has " + snapshot.val().number + " many tags");
 // });
+
+$(".onload .glyphicon" ).click(function() {
+  $(".onload").addClass("invisible")
+});
+
+
 $(".tags").on ('click', '.tag', function() { //when a tag is clicked it runs search and renders the imgaes
 	if ($(this).hasClass( "button-primary" ) === true) {
 		$(this).removeClass('button-primary')

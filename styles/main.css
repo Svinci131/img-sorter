@@ -11,9 +11,8 @@ body {
 /*	font-weight: 600;*/
 	line-height: 2;
 	background-color: #efeeeb;
-	
-
 }
+
 
 ul {
 	list-style-type: none;
@@ -29,6 +28,25 @@ ul {
 }
 
 /*INDEX STYLES-GENERAL*/
+	.onload {
+		padding:10px;
+		background-color: white;
+		border: 2px solid rgb(172, 32, 35);
+		position: absolute;
+		left:200px;
+		top:120px;
+		z-index: 9999999;
+	}
+	.onload h5 {
+		margin-top: 15%;
+		padding:8px;
+	}
+	
+	.onload .glyphicon {
+		color: rgb(172, 32, 35);
+		float:right;
+
+	}
 	/*INDEX-HEADER*/
 		h1 { 
 			font-size: 1.5em; 
@@ -456,6 +474,9 @@ ul {
 	}
 
 	@media (max-width: 540px) {
+		.onload {
+		    left: 130px;
+		}
 		.photo {
 		    display: inline-block;
 		    width: 90%;
@@ -546,26 +567,11 @@ ul {
 		}
 
 	}
-	/*@media (max-width: 490px) {
-		.howTo {
-		    left: 6%;
-		    width:300px;
-		}
-		.photo {
-			width:100%;
-			height: 150px;
-		}
-		.thumbnails {
-			display: initial;
-		}
-		.nav>li {
-			font-size: 10px;
-		}
-		.nav_logo {
-    		width: 57%;
-    	}
-	}*/
+
 	@media (max-width: 420px) {
+		.onload {
+		    left: 80px;
+		}
 		.howTo {
 		    left: 6%;
 		    width:300px;
@@ -585,6 +591,10 @@ ul {
     	}
 	}
 	@media (max-width: 398px) {
+		.onload {
+		    left: 45px;
+		    top: 170px;
+		}
 		.howTo {
 		    width:250px; 
 		}
@@ -625,6 +635,9 @@ ul {
 		}
 	}
 	@media (max-width: 284px) {
+		.onload {
+		    left: 30px;
+		}
 		.howTo {
 		    width:230px;
 		    font-size: 12px;
