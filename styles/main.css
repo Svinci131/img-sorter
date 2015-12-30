@@ -355,6 +355,7 @@ ul {
 	}
 	.right_col {
 	    position: absolute;
+	    padding-bottom: 200px;
 	    top: 0;
 	    left: 30%;
 	    width: 70%;
@@ -509,6 +510,7 @@ ul {
 		.right_col {
 			left: 40%;
 		    width: 60%;
+		    padding-bottom: 200px;
 		}
 		.left_col {
 		    width: 40%;
