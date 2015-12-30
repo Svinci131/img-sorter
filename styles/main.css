@@ -144,7 +144,7 @@ ul {
 			left: 0;
 
 			position: fixed;
-			display: flex;
+			display: none;
 			align-items: center;
 			justify-content: center;
 		}
@@ -454,7 +454,7 @@ ul {
 		color:#fff;
 		padding: 10px;
     	line-height: 18px;
-		position : absolute;
+		position : fixed;
     	bottom : 0;
     	width:100%;
     	text-align: center;
@@ -734,7 +734,8 @@ ul {
 		}
 		.thumbnails {
 			display: block;
-			margin-top: 5%;
+			margin-top: 0;
+			padding-bottom: 200px;
 		}
 		.thumbnail_label {
      		margin-bottom: 0px; 
