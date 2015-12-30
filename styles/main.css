@@ -31,18 +31,47 @@ ul {
 	display:none;
 }
 
+.bold {
+	font-weight: bold;
+}
 .serif {
 	font-family: ‘Merriweather’, Georgia, serif;
 	color: rgba(29,29,29,.75);
+	font-weight: lighter;
+    text-transform: none;
 }
 
+.white {
+	color:white;
+}
+
+/*about STYLES-GENERAL*/ 
+
+.about {
+	padding: 20px;
+	display: flex;
+	vertical-align: top;
+}
+.about_text{
+	margin-left: 10%;
+	margin-right: 5%;
+	line-height: 24px;
+    font-size: 14px;
+}
+.about_text>p{
+	margin-bottom: 0.5rem;
+}
+.about>h1{
+	 margin-top: 0;
+}
+/*about STYLES-GENERAL*/ 
 /*INDEX STYLES-GENERAL*/
 	
 	
 	
 	/*INDEX-HEADER*/
 		h1 { 
-			font-size: 1.5em; 
+			/*font-size: 1.5em; */
 			margin: 10px; 
 		}
 
@@ -385,15 +414,18 @@ ul {
 
 	/*footer*/
 	footer {
-		background-color: rgba(29,29,29,0.5);
+		background-color:rgb(165, 28, 48);
 		/*#d3dcdc*/
-		font-family: ‘Merriweather’, Georgia, serif;
-		font-size: 14px;
+		font-weight:600;
+		text-transform: uppercase;
+		font-size: 11px;
 		color:#fff;
-		padding: 25px;
+		padding: 10px;
+    	line-height: 18px;
 		position : absolute;
     	bottom : 0;
     	width:100%;
+    	text-align: center;
 	}
 	footer a {
 		text-decoration: underline;
@@ -581,8 +613,21 @@ ul {
 		}
 
 	}
+	@media (max-width: 480px) {
+		.about {
+			display: block;
+		/*	margin-left: 5%;*/
+		}
+		.about>p {
+			font-size: 12px;
+		/*	margin-left: 5%;*/
+		}
+		.about>h1 {
+			margin-bottom: 3%; 
+		}
 
-	@media (max-width: 420px) {
+	}
+	@media (max-width: 445px) {
 		.howTo {
 		    left: 6%;
 		    width:300px;
@@ -597,9 +642,16 @@ ul {
 		.nav>li {
 			font-size: 10px;
 		}
-		.nav_logo {
-    		width: 57%;
-    	}
+		.nav .nav_logo_icon {
+			display:inline-block;
+			height:auto;
+		}
+		.nav .nav_logo {
+			display:none;
+		}
+		.nav>.nav_logo_icon>a>img {    
+    	   width: 50%;
+		} 
 	}
 	@media (max-width: 398px) {
 		.howTo {
@@ -627,21 +679,25 @@ ul {
 			width:auto;
 		}
 		
-		.nav .nav_logo_icon {
+		.nav>.nav_logo_icon {
 			display:inline-block;
 			height:auto;
+			width: 28%;
 		}
 		.nav .nav_logo {
 			display:none;
 		}
 		.nav>.nav_logo_icon>a>img {    
-    	   width: 50%;
+    	   width: 70%;
 		} 
 		.photo {
 			height: 150px;
 		}
 	}
-	@media (max-width: 284px) {
+	@media (max-width: 320px) {
+		.about>h1 {
+			font-size: 24px; 
+		}
 		.howTo {
 		    width:230px;
 		    font-size: 12px;
@@ -649,14 +705,14 @@ ul {
 		.nav .nav_logo_icon {
 			display:inline-block;
 			height:auto;
-			width: 20%;
+			width: 15%;
 
 		}
 		.nav .nav_logo {
 			display:none;
 		}
 		.nav>.nav_logo_icon>a>img {    
-    		width: 200%;
+    		width: 300%;
     		padding-bottom: 5px;
 		} 
 		.nav>li {
@@ -667,12 +723,14 @@ ul {
 
 		}
 	}
+
 	@media (max-width: 225px) {
 		.howTo {
 			width: 220px;
 			left:2%;
 
 		}
+
 	}
 	@media (max-width: 208px) {
 		.howTo {
