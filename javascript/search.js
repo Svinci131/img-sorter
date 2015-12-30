@@ -136,5 +136,5 @@ tagsRef.orderByValue().on("value", function(snapshot) {//when a value changes
 });
 
 function renderThumnail (location, name, num) {
-	location.append("<div class='photo'><div class=thumbnail_label><a download='"+name+"' href='https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/"+name+"' class='download glyphicon glyphicon-download-alt'></a></div><img src='https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/"+name+"' class=thumbnail id="+name+"></div>");
+	location.append("<div class='photo'><div class=thumbnail_label><a download='"+name+"' href='https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/"+name+"' class='download glyphicon glyphicon-download-alt'></a></div><div class='img_holder'><img src='https://googledrive.com/host/0B58gM6k8rHBoZE5EY044TkJ1Ulk/"+name+"' class=thumbnail id="+name+"></div></div>");
 }

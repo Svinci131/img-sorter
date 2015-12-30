@@ -5,9 +5,16 @@ function start (first) {
 	$(".howTo").removeClass("invisible")
 	$("#"+first).removeClass("invisible")
 }
-$("#demo").click (function (){
+$("._demo").click (function (){
 	ref.update ({demo: true});
-	start("first")
+	if (window.location.pathname === "/Desktop/img_sorter/about.html"){
+		window.location.replace("index.html")
+	}
+	
+	// else {
+	// 	start("first");
+	// }
+	
 });
 
 var holder = null;
@@ -15,11 +22,15 @@ $(".next").click (function (){
 
 	var prev = $(this).parent().attr("id")
 	var next = ($(this).parent().next().attr("id"))
+	
 	var viewportWidth = $("body").innerWidth();
 	$("#"+prev).addClass("invisible")
 	$("#"+next).removeClass("invisible")
 
+
 	if (next === "second"){
+		console.log("foo", next)
+		$("#first").css("display", "none")
 		third ();
 		var amount = $(".howTo").css("left")+100
 		if (viewportWidth <= 540){
@@ -88,10 +99,16 @@ function third () {//click the tags
 }
 
 ref.on("value", function(snapshot) {
-	if(snapshot.val().demo !== false){
-		start("fifth")
-		highlight ($("#upload"))
-	};
+	console.log(window.location.url)
+	if (snapshot.val().demo !== false && window.location.pathname === "/Desktop/img_sorter/createalbum.html") {
+		start("fifth");
+		highlight ($("#upload"));
+	}
+	else if (snapshot.val().demo !== false && window.location.pathname === "/Desktop/img_sorter/index.html"){
+
+		start("first")
+	
+	}
 });
 
 
