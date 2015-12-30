@@ -48,9 +48,15 @@ ul {
 /*about STYLES-GENERAL*/ 
 
 .about {
-	padding: 20px;
+
+	padding-bottom: 200px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
 	display: flex;
 	vertical-align: top;
+	
+
 }
 .about_text{
 	margin-left: 10%;
@@ -343,7 +349,8 @@ ul {
 	    height: 100%;
 	    background-color: #e7e6e4;
 	    padding-top: 2%;
-	    padding-left: 3%
+	    padding-left: 3%;
+	    padding-bottom: 200px;
 	    overflow: auto;
 	}
 	.right_col {
@@ -464,7 +471,7 @@ ul {
 	}
 
 	footer a:hover {
-		color:#a51c30;
+		color:#eee;
 	}
 	/*footer a:visited {
 		color:#a51c30;
@@ -505,6 +512,7 @@ ul {
 		}
 		.left_col {
 		    width: 40%;
+		    padding-left: 3%;
 		}
 	}
 	@media (max-width: 690px) {
@@ -601,6 +609,7 @@ ul {
 		   /* background-color: #e8eded;*/
 		    margin:0px;
 		    padding-top: 20px;
+		    padding-bottom: 200px;
 
 		}
 		#tagInput {
@@ -653,6 +662,7 @@ ul {
 	@media (max-width: 480px) {
 		.about {
 			display: block;
+			padding-bottom: 200px;
 		/*	margin-left: 5%;*/
 		}
 		.about>p {
@@ -664,7 +674,7 @@ ul {
 		}
 
 	}
-	@media (max-width: 445px) {
+	@media (max-width: 450px) {
 		.howTo {
 		    left: 6%;
 		    width:300px;
